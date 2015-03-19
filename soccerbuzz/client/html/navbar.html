@@ -1,0 +1,66 @@
+<template name="navbar">
+
+  <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-nav">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="{{pathFor "home"}}"><img src="/buzz.png" height="30" width="100"></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="top-nav">
+      <ul class="nav navbar-nav">
+        <!-- <li class="{{#if isCurrentPage "home"}} active {{/if}}">
+              <a href="{{pathFor "home"}}">Home</a>
+        </li> -->
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+      {{#if currentUser}}
+          <!-- <li><a href="{{pathFor "userProfile"}}">{{username}}</a></li> -->
+           <li>
+            <button class="btn btn-block btn-upload navbar-btn hidden-xs" data-action="new-buzz">
+              Upload
+            </button>
+            <button class="btn btn-block btn-upload-small navbar-btn visible-xs" data-action="new-buzz">
+              Upload
+            </button>
+          </li>
+          <li>
+          <button class="btn btn-block btn-signout navbar-btn hidden-xs" data-action="signout-btn">
+          Signout
+          </button>
+            <button class="btn btn-block btn-signout-small navbar-btn visible-xs" 
+            data-action="signout-btn">
+          Signout
+          </button>
+          </li>
+         {{else}}
+          <li>
+            <button class="btn btn-block navbar-btn btn-signin hidden-xs" data-action="signin-btn">
+              Signin
+            </button>
+              <button class="btn btn-block navbar-btn btn-signin-small visible-xs" data-action="signin-btn">
+              Signin
+            </button>
+          </li>
+          {{/if}}
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container -->
+</nav>
+{{> overlayTemplate}}
+{{> buzzModal}}
+</template>
+
+<template name="overlayTemplate">
+  <div id="overlay">
+    <a href="#" class="button-close" data-action="overlay-close">×</a>
+    {{> loginButtonsTemplate}}
+  </div>
+</template>

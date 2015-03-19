@@ -1,0 +1,512 @@
+
+.cta-btn {
+    width: 300px;
+    background-color: #3b5998;
+    border: 0;
+    color: #fff;
+    line-height: 25px;
+    margin: 0 auto;
+
+}
+
+.cta-btn-small {
+    background-color: #3b5998;
+    border: 0;
+    color: #fff;
+    line-height: 25px;
+    margin: 0 auto;
+}
+.cta-btn-small:hover {
+   color: #eeeeee;
+}
+.btn-toggle {
+margin: 15px auto;
+width: 200px;
+color: #ffffff;
+background-color: #6C7A89;
+}
+.btn-toggle:hover {
+color: #eeeeee;
+}
+
+.hide-comments {
+  display: none;
+}
+#comments-list {
+    margin-top: 7px;
+    text-align: left;
+    padding-top: 8px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    min-height: 100px;
+    background-color: #efefef;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    -webkit-box-shadow: 0px 1px 5px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    0px 1px 5px 0px rgba(50, 50, 50, 0.75);
+    box-shadow:         0px 1px 5px 0px rgba(50, 50, 50, 0.75);
+}
+
+#fb-comment {
+  display: block;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+#comments-box {
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+a div {
+  display: inline;
+}
+h2, h3, #buzz-para {
+  font-family: 'Dosis', sans-serif;
+}
+.sweet-alert h2 {
+    font-size: 20px;
+}
+.cta-btn:hover {
+  color: #eeeeee;
+}
+#cta-upload {
+  margin-bottom: 30px;
+  text-align: center;
+}
+#wrapper {
+/*width: 1000px;*/
+margin:0 auto;
+/*background: #fff;*/
+}
+#myfooter{
+  height: 60px;
+  background-color: #e6e6e6;
+  text-align: center;
+  padding-top: 1em;
+}
+
+hr { 
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-width: 1px;
+    color: #eee;
+    width: 100%;
+}
+#buzz-details {
+    margin-bottom: 40px;
+}
+#share-div {
+    margin-bottom: 20px;
+}
+#buzz-social {
+    padding: 10px;
+    text-align: left;
+    min-height: 100px;
+    margin-bottom: 20px;
+}
+
+.sharing-buttons{
+  list-style: none;
+  text-decoration: none;
+}
+
+.sharing-buttons-small {
+   list-style: none;
+  text-decoration: none;
+}
+.sharing-buttons-small li {
+  display: inline;
+}
+.sharing-buttons li{
+  display: inline;
+  margin-right: 5px;
+}
+
+.sharing-buttons a{
+  border: 1px solid;
+  padding: 0.5em;
+  color: #fff;
+  text-decoration: none;
+}
+
+.sharing-buttons a:hover{
+  color: #eee;
+  text-decoration: none;
+}
+
+.fa{
+  padding: 0.5em;
+}
+
+#main-wrapper {
+     min-height: 100%;
+     margin-top: 60px;
+}
+#buzz-para {
+    font-size: 20px;
+    font-weight: bold;
+}
+#para-caption {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#show-buzz-wrap {
+    margin-bottom: 100px;
+}
+.para-inline {
+    display: inline-block;
+    margin-right: 15px;
+    color: #999;
+}
+
+#image-div {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#image-details {
+    padding: 10px;
+    text-align: left;
+    min-height: 100px;
+    -webkit-box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    0px 3px 5px 0px rgba(50, 50, 50, 0.75);
+    box-shadow:         0px 3px 5px 0px rgba(50, 50, 50, 0.75);
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+p.login-divider:before,  p.login-divider:after {
+    /*content: "\2014";*/
+   content: "";
+    display: inline-block;
+    height: 1px;
+    width: 20%;
+    margin: 10px;
+    background: #000;
+}
+
+button.btn-google {
+    width: 200px;
+    margin: 20px auto;
+    background-color: #d34836;
+    border: 0;
+    color: #fff;
+}
+
+button.btn-google:hover {
+  color: #eeeeee;
+}
+
+#imageOverlay {
+display: none;
+position: fixed;
+overflow: auto;
+text-align: center;
+top: 0;
+left: 0;
+bottom: 0;
+right: 0;
+/*display: block;*/
+z-index: 900;
+background-color: rgba(255,255,255,0.97);
+width: 100%;
+padding: 0;
+margin: 0;
+border: 0;
+}
+
+#imageOverlay .button-close {
+font-size: 40px;
+padding: 10px 20px;
+position: fixed;
+top: 0;
+right: 0;
+font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+letter-spacing: -0.02em;
+font-weight: 300;
+font-style: normal;
+}
+
+#overlay {
+display: none;
+position: fixed;
+overflow: auto;
+text-align: center;
+top: 0;
+left: 0;
+bottom: 0;
+right: 0;
+/*display: block;*/
+z-index: 900;
+background-color: rgba(255,255,255,0.97);
+width: 100%;
+padding: 0;
+margin: 0;
+border: 0;
+}
+
+.at-oauth, .at-sep {
+    display: none;
+} 
+.overlay-wrapper {
+    text-align: center;
+}
+.overlay-header {
+    margin-top: 100px;
+}
+.overlay-social-actions {
+    text-align: center;
+}
+
+#overlay .button-close {
+font-size: 40px;
+padding: 10px 20px;
+position: fixed;
+top: 0;
+right: 0;
+font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+letter-spacing: -0.02em;
+font-weight: 300;
+font-style: normal;
+}
+
+a.button-close {
+    text-decoration: none;
+}
+
+.navbar-btn{
+    border: 0;
+    color: #fff;
+    display: inline-block;
+}
+.btn-signout {
+background-color: #3b5998;
+margin-left: 10px;
+}
+.btn-signout-small {
+  background-color: #3b5998;
+}
+.btn-signout-small:hover {
+ color: #eeeeee; 
+}
+.btn-signout:hover {
+ color: #eeeeee; 
+}
+
+.navbar-brand img {
+  margin-top: -5px;
+}
+.btn-signin {
+  background-color: #3b5998;
+}
+.btn-signin-small {
+  background-color: #3b5998;
+  margin: 0 auto;
+}
+.btn-signin-small:hover {
+  color: #eeeeee;
+}
+.btn-signin:hover {
+  color: #eeeeee;
+}
+
+.btn-upload-small {
+   background-color: #2ECC71;
+}
+
+.btn-upload {
+   background-color: #2ECC71;
+}
+.btn-upload-small:hover {
+   color: #eeeeee;;
+}
+.btn-upload:hover {
+   color: #eeeeee;;
+}
+
+.btn-facebook {
+    width: 200px;
+    background-color: #3b5998;
+    border: 0;
+    color: #fff;
+    display: inline-block;
+}
+
+.btn-facebook-small {
+    background-color: #3b5998;
+    border: 0;
+    color: #fff;
+    display: inline-block;
+    width: 50%;
+    font-size: 10px;
+}
+
+#social-proof {
+  margin-top: 100px;
+}
+#social-proof img{
+  display: inline;
+}
+#social-proof blockquote{
+  display: inline;
+}
+
+.btn-facebook:hover {
+color: #eeeeee;
+}
+.btn-facebook-small:hover {
+color: #eeeeee;
+}
+.btn-twitter {
+    width: 200px;
+    background-color: #55acee;
+    border: 0;
+    color: #fff;
+    display: inline-block;
+}
+
+.btn-twitter-small {
+    background-color: #55acee;
+    border: 0;
+    color: #fff;
+    display: inline-block;
+    width: 80px;
+    font-size: 10px;
+}
+.btn-twitter:hover  {
+  color: #eeeeee;
+}
+.btn-twitter-small:hover  {
+  color: #eeeeee;
+}
+
+body,
+html {
+margin:0;
+padding:0;
+color:#000;
+background: #eee;
+}
+
+.para-inline > a {
+  color: #999;
+}
+
+#main {
+/*background:#9c9;*/
+float:left;
+/*width:700px;
+padding: 20px*/
+}
+
+
+#sidebar {
+/*float:right;*/
+/*width:300px;
+background:#c9c;
+padding: 10px;*/
+}
+#signup-email{
+  float: left;
+}
+#sidebar .form-control {
+  border-radius: 0px;
+}
+.signup-btn {
+  float: right;
+  font-weight: bold;
+}
+#sidebar .col-sm-8, .col-sm-4 {
+  padding: 0;
+}
+
+#signup-desc {
+
+}
+ .signup-btn .btn-block {
+  border-radius: 0;
+  background-color: #D24D57;
+  line-height: 21px;
+  color: #ffffff;
+ }
+ #sidebar .panel {
+    border-width: 1px solid #eeeeee;
+    margin-bottom: 1.25rem;
+    padding: 1.25rem;
+    background: none repeat scroll 0% 0% #F2F2F2;
+    color: #333;
+    margin-top: 102px;
+  }
+
+.clearfix:before,
+.clearfix:after {
+    content:"";
+    display:table;
+}
+.clearfix:after {
+    clear:both;
+}
+/* For IE 6/7 (trigger hasLayout) */
+.clearfix {
+    zoom:1;
+}
+
+#signinForm {
+margin-top: 20px;
+margin-bottom: 30px;
+display: none;
+
+}
+
+.at-title h2.ui {
+    display: none;
+}
+
+button.button-facebook {
+    width: 200px;
+    margin: 20px auto;
+    background-color: #3b5998;
+    border: 0;
+    color: #fff;
+}
+
+button.button-facebook:hover {
+  color: #eeeeee;
+}
+
+button.button-twitter {
+    width: 200px;
+    margin: 20px auto;
+    background-color: #55acee;
+    border: 0;
+    color: #fff;
+}
+
+button.button-twitter:hover {
+  color: #eeeeee;
+}
+
+blockquote {
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+blockquote p {
+  display: inline;
+}

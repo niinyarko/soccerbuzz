@@ -1,0 +1,1 @@
+Pages = new Paginator(Buzz);
