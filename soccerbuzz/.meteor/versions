@@ -15,7 +15,6 @@ blaze@2.0.4
 blaze-tools@1.0.2
 boilerplate-generator@1.0.2
 callback-hook@1.0.2
-cfs:http-methods@0.0.27
 check@1.0.4
 coffeescript@1.0.5
 datariot:ganalytics@0.2.1
@@ -31,7 +30,6 @@ follower-livedata@1.0.3
 fortawesome:fontawesome@4.2.0_2
 geojson-utils@1.0.2
 gwendall:auth-client-callbacks@0.1.0
-hitchcott:paginator@0.2.0
 html-tools@1.0.3
 htmljs@1.0.3
 http@1.0.10
@@ -70,6 +68,7 @@ oauth2@1.1.2
 observe-sequence@1.0.4
 ogamedia:timer@0.0.2
 ordered-dict@1.0.2
+percolate:paginated-subscription@0.2.4
 random@1.0.2
 reactive-dict@1.0.5
 reactive-var@1.0.4
@@ -85,7 +84,6 @@ spacebars@1.0.5
 spacebars-compiler@1.0.4
 spiderable@1.0.6
 srp@1.0.2
-tap:i18n@1.4.1
 templating@1.0.11
 tracker@1.0.5
 twbs:bootstrap@3.3.4

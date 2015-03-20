@@ -80,6 +80,9 @@ Template.home.events({
        $("#buzzModal").modal("show");
     }
    
+  },
+  "click [data-action='load-btn']": function() {
+    handle.loadNextPage();
   }
 })
 

@@ -8,7 +8,9 @@
     margin: 0 auto;
 
 }
-
+#load-div {
+  margin-bottom: 30px;
+}
 .cta-btn-small {
     background-color: #3b5998;
     border: 0;

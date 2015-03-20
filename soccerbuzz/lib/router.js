@@ -6,19 +6,11 @@ Router.route("/", function() {
     this.render("home");
 },
 {   name: "home",
-    waitOn: function(){
-      return [
-        Meteor.subscribe("allBuzzes")
-      ]
-      
-      },
     data: function() {
         GAnalytics.pageview();
-        return {
-            buzz: Pages.find({}, {sort: {createdAt: -1}, itemsPerPage:10})
-        }
     }
 })
+
 
 Router.route("/profile", function() {
     this.render("profile");
