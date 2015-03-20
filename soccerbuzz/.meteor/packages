@@ -5,9 +5,7 @@
 # but you can also edit it by hand.
 
 meteor-platform
-insecure
 iron:router
-fortawesome:fontawesome
 aldeed:autoform
 aldeed:collection2
 edgee:slingshot
@@ -28,3 +26,4 @@ manuelschoebel:ms-seo
 gwendall:auth-client-callbacks
 ogamedia:timer
 percolate:paginated-subscription
+natestrauser:font-awesome

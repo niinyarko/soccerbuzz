@@ -6,6 +6,9 @@ Template.profile.events({
 
 
 Template.navbar.events({
+   "click [data-action='signin-btn-small']": function() {
+        $("#loginModal").modal("show");
+    },
     "click [data-action='signin-btn']": function() {
         $("nav").removeClass("navbar-fixed-top");
         $("#overlay").show();
@@ -56,7 +59,39 @@ Template.loginButtonsTemplate.events({
     }
 });
 
+Template.modalLogin.events({
+  'click .button-facebook': function() {
+    return Meteor.loginWithFacebook({
+      requestPermissions: ['email']
+    }, function(error) {
+      if (error) {
+        return console.log(error.reason);
+      }
+    });
+  },
+  'click .button-twitter': function() {
+    return Meteor.loginWithTwitter(function(error) {
+      if (error) {
+        return console.log(error.reason);
+      }
+    });
+  },
+
+  "click [data-action='google-auth']": function() {
+    return Meteor.loginWithGoogle(function(error) {
+      if (error) {
+        return console.log(error.reason);
+      }
+    });
+  },
+
+  "click [data-action='email-auth']": function() {
+        $("#signinForm").toggle();
+    }
+});
+
 Accounts.onLogin(function() {
+  $("#loginModal").modal("hide");
   $("#overlay").hide();
   Router.go("home");
 });
@@ -91,6 +126,9 @@ Template.showBuzzTemplate.events({
     $("#commentsShow").toggleClass("hide-comments");
     var txt =  $("#commentsShow").hasClass('') ? 'Hide Comments' : 'Show Comments'
     $(".btn-toggle").html("<p>" + txt + "</p>");  
+  },
+  "click [data-action='add-comment']": function() {
+    swal("Sorry! you need to signin to comment");
   }
 })
 

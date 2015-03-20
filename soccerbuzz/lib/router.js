@@ -26,6 +26,7 @@ Router.route("/:_id/:slug", function() {
       return Meteor.subscribe("allBuzzes");
       },
     data: function() {
+        GAnalytics.pageview();
         var _id = this.params._id;
         return Buzz.findOne(_id);
     },

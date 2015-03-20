@@ -21,27 +21,30 @@
                       </div>
                        <div class="panel-footer">
                              <div id="buzz-social">
-                           <p class="para-inline">posted by: {{username _id}}</p>
+                           <!-- <p class="para-inline">posted by: {{username _id}}</p> -->
                             <p class="para-inline"><i class="fa fa-clock-o"></i>
                              {{ tm_now createdAt}}
                             </p>
-                              <p class="para-inline">
+                          <!--     <p class="para-inline">
                               <i class="glyphicon glyphicon-comment"></i>
-                             <!--  <a href="{{urlFor 'showBuzz' _id=_id slug=formatedCaption}}"><div class="fb-comments-count" data-href="{{urlFor 'showBuzz' _id=_id slug=formatedCaption}}">0</div> comments</a> -->
+                              <a href="{{urlFor 'showBuzz' _id=_id slug=formatedCaption}}"><div class="fb-comments-count" data-href="{{urlFor 'showBuzz' _id=_id slug=formatedCaption}}">0</div> comments</a>
                              {{commentsCount _id}}
-                             </p>
+                             </p> -->
+                             <a href="{{urlFor 'showBuzz' _id=_id slug=formatedCaption}}" class="ui icon button" title="comment">
+                                <i class="comment icon"></i>
+                            </a>
                             <ul class="sharing-buttons hidden-xs">
                               <li>
                                    <a href="http://www.facebook.com/sharer.php?u={{urlFor 'showBuzz' _id=_id slug=formatedCaption}}" target="_blank" class="btn btn-block btn-social btn-facebook">
                                     <span>
-                                  <i class="fa fa-facebook"></i>Facebook
+                                  <i class="fa fa-facebook"></i>Share
                                   </span>
                                   </a>
                               </li>
                               <li>
                                <a href="http://twitter.com/share?url={{urlFor 'showBuzz' _id=_id slug=formatedCaption}}&text={{caption}}" target="_blank" class="btn btn-block btn-social btn-twitter">
                                     <span>
-                                  <i class="fa fa-twitter"></i>Twitter
+                                  <i class="fa fa-twitter"></i>Tweet
                                   </span>
                                 </a>
                               </li>
@@ -50,7 +53,7 @@
                               <li>
                                    <a href="http://www.facebook.com/sharer.php?u={{urlFor 'showBuzz' _id=_id slug=formatedCaption}}" target="_blank" class="btn btn-block btn-social btn-facebook-small">
                                     <span>
-                                  <i class="fa fa-facebook"></i>Facebook
+                                  <i class="fa fa-facebook"></i>Share
                                   </span>
                                   </a>
                               </li>
@@ -67,7 +70,11 @@
                     </div>
                    {{/each}}
                    <div id="load-div">
-                     <button class="" data-action="load-btn">Load More</button> 
+                      <div class="panel panel-default">
+                        <div class="panel-body">
+                          <h3 class="text-center" data-action="load-btn">Load More...</h3>
+                        </div>
+                      </div>
                    </div>
                 </div>
                 <div id="sidebar" class="hidden-xs col-sm-5">
@@ -88,7 +95,6 @@
                           </div>
                           </fieldset>
                        {{/autoForm}}
-                       <!-- <small id="signup-desc" >Signup for daily updates on soccer news.</small> -->
                       </div>
                       </div>
                       <div class="fb-like-box" data-href="https://www.facebook.com/soccabuzz" data-colorscheme="light" data-show-faces="true" data-header="true" data-stream="false" data-show-border="true"></div>
@@ -112,7 +118,7 @@
                           </div>
                         <div id="image-details">
                             <p id="para-caption">{{caption}}</p>
-                            <p class="para-inline">posted by: {{username _id}}</p>
+                            <!-- <p class="para-inline">posted by: {{username _id}}</p> -->
                              <p class="para-inline">
                               <i class="glyphicon glyphicon-comment"></i>
                               <a href="{{urlFor 'showBuzz' _id=_id slug=formatedCaption}}"><div class="fb-comments-count" data-href="{{urlFor 'showBuzz' _id=_id slug=formatedCaption}}">0</div> comments</a>
@@ -126,14 +132,14 @@
                            <li>
                                  <a href="http://www.facebook.com/sharer.php?u={{urlFor 'showBuzz' _id=_id slug=formatedCaption}}" target="_blank" class="btn btn-block btn-social btn-facebook">
                                     <span>
-                                  <i class="fa fa-facebook"></i>Facebook
+                                  <i class="fa fa-facebook"></i>Share
                                   </span>
                                   </a>
                               </li>
                               <li>
                                 <a href="http://twitter.com/share?url={{urlFor 'showBuzz' _id=_id slug=formatedCaption}}&text={{caption}}" target="_blank" class="btn btn-block btn-social btn-twitter">
                                     <span>
-                                  <i class="fa fa-twitter"></i>Twitter
+                                  <i class="fa fa-twitter"></i>Tweet
                                   </span>
                                 </a>
                               </li>
@@ -145,8 +151,8 @@
                           <fieldset>
                             {{> afQuickField name='comment' label=false rows=4 placeholder="Share your thoughts" }}
                           </fieldset>
-                            <div class="submit-div" data-action="add-comment" id="{{_id}}">
-                            <button type="submit" class="btn btn-primary">
+                            <div class="submit-div">
+                            <button type="submit" class="btn btn-primary" data-action="add-comment">
                               Submit
                             </button>
                             </div>
@@ -172,27 +178,3 @@
            </div>
     </div>
 </template>
-<!-- 
-<template name="imageOverlayTemplate">
-  <div id="imageOverlay">
-    <a href="#" class="button-close" data-action="overlay-close">×</a>
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-12">
-                <div id="image-div">
-                  <img src="{{userImage.imageUrl}}" width="800" />
-                </div>
-                  <div class="row">
-                      <div class="col-sm-8 col-sm-offset-2">
-                        <div id="image-details">
-                            <p id="para-caption">{{userImage.caption}}</p>
-                             <p>by {{username}}</p>
-                        </div>
-                      </div>
-                  </div>
-                  <div class="fb-like" data-href="{{currentUrl}}" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>'
-            </div>
-           </div>
-        </div>
-      </div>
-</template> -->
