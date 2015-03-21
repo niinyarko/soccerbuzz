@@ -422,21 +422,14 @@ color: #eeeeee;
   display: inline;
   color: #999;
 }
-.vote-buttons-small {
+.comment-vote-small {
   color: #999;
 }
-.comment-div-small{
+.comment-vote-small a{
   color: #999;
-  width: 45%;
-  float: left;
-}
-.comment-div-small a{
-  color: #999;
+  margin-right: 15px;
 }
 
-.vote-buttons p {
-  display: inline;
-}
 .icon-arrow-up:before{
   content:"\f062";
   font-family: FontAwesome;
