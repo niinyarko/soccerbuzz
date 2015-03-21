@@ -126,6 +126,8 @@ hr {
 .sharing-buttons-small {
    list-style: none;
   text-decoration: none;
+  margin-top: 7px;
+  margin-left: -40px;
 }
 .sharing-buttons-small li {
   display: inline;
@@ -418,6 +420,17 @@ color: #eeeeee;
 }
 .vote-buttons {
   display: inline;
+  color: #999;
+}
+.vote-buttons-small {
+  color: #999;
+}
+.comment-div-small{
+  color: #999;
+  width: 45%;
+  float: left;
+}
+.comment-div-small a{
   color: #999;
 }
 

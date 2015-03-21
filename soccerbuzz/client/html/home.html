@@ -27,7 +27,7 @@
                             <p class="para-inline"><i class="fa fa-clock-o"></i>
                              {{ tm_now createdAt}}
                             </p>
-                             <div class="comment-div">
+                             <div class="comment-div hidden-xs">
                              <p><a href="{{urlFor 'showBuzz' _id=_id slug=formatedCaption}}">        {{commentsCount}} {{commentString}}
                              <div id="comments-box-hide">{{> commentsBox id=_id}}</div>
                              </a>
@@ -36,7 +36,25 @@
                                 <span class="icon-comment"></span>
                               </a>
                              </div>
-                            <div class="vote-buttons">
+                             <div class="visible-xs comment-div-small" >
+                                <p><a href="{{urlFor 'showBuzz' _id=_id slug=formatedCaption}}">        {{commentsCount}} {{commentString}}
+                                    <div id="comments-box-hide">{{> commentsBox id=_id}}</div>
+                                  </a>
+                                </p>
+                                 <a href="{{urlFor 'showBuzz' _id=_id slug=formatedCaption}}" class="btn btn-default btn-sm" title="comment">
+                                  <span class="icon-comment"></span>
+                                 </a>
+                             </div>
+                            <div class="vote-buttons hidden-xs">
+                                <p>{{score}} {{scoreString score}}</p>
+                               <a href="#" class="btn btn-default btn-sm" data-action="increment">
+                                <span class="icon-arrow-up"></span>
+                               </a>
+                               <a href="#" class="btn btn-default btn-sm" data-action="decrement">
+                                <span class="icon-arrow-down"></span>
+                              </a>
+                            </div>
+                            <div class="vote-buttons-small visible-xs">
                                 <p>{{score}} {{scoreString score}}</p>
                                <a href="#" class="btn btn-default btn-sm" data-action="increment">
                                 <span class="icon-arrow-up"></span>
