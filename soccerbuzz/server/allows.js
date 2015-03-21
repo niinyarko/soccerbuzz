@@ -27,3 +27,9 @@ Meteor.users.allow({
         return (userId && doc._id === userId);
     }
 });
+
+Signups.allow({
+    insert: function (userId, doc) {
+        return true;
+    }
+});

@@ -12,13 +12,8 @@
       </button>
       <a class="navbar-brand" href="{{pathFor "home"}}"><img src="/buzz.png" height="30" width="100"></a>
     </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="top-nav">
       <ul class="nav navbar-nav">
-        <!-- <li class="{{#if isCurrentPage "home"}} active {{/if}}">
-              <a href="{{pathFor "home"}}">Home</a>
-        </li> -->
       </ul>
       <ul class="nav navbar-nav navbar-right">
       {{#if currentUser}}
@@ -27,9 +22,6 @@
             <button class="btn btn-block btn-upload navbar-btn hidden-xs" data-action="new-buzz">
               Upload
             </button>
-           <!--  <button class="btn btn-block btn-upload-small navbar-btn visible-xs" data-action="new-buzz">
-              Upload
-            </button> -->
             <a href="#" class="visible-xs btn-upload-small" data-action="new-buzz">Upload
             </a>
           </li>
@@ -37,10 +29,6 @@
           <button class="btn btn-block btn-signout navbar-btn hidden-xs" data-action="signout-btn">
           Signout
           </button>
-         <!--    <button class="btn btn-block btn-signout-small navbar-btn visible-xs" 
-            data-action="signout-btn">
-          Signout
-          </button> -->
           <a href="#" class="visible-xs btn-signout-small" data-action="signout-btn">Signout
             </a>
           </li>
@@ -49,9 +37,6 @@
             <button class="btn btn-block navbar-btn btn-signin hidden-xs" data-action="signin-btn">
               Signin
             </button>
-              <!-- <button class="btn btn-block navbar-btn btn-signin-small visible-xs" data-action="signin-btn-small">
-              Signin
-            </button> -->
             <a href="#" class="visible-xs btn-signin-small" data-action="signin-btn-small">Signin
             </a>
           </li>

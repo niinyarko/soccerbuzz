@@ -56,49 +56,12 @@ Buzz.attachSchema(new SimpleSchema({
   }
 }))
 
-/*Comments = new Mongo.Collection("comments");
-
-Comments.attachSchema(new SimpleSchema({
-  comment: {
-    type: String
-  },
-  buzzId: {
-    type: String,
-    autoform: {
-      omit: true
-    }
-  },
-   owner: {
-    type: String,
-    autoform: {
-      omit: true
-    },
-      autoValue: function(){
-      if (this.isInsert){
-        return Meteor.userId();
-      }
-    }
-  },
-   createdAt: {
-    type: Date,
-    autoform: {
-      omit: true
-    },
-    autoValue: function(){
-      if (this.isInsert){
-        return new Date();
-      }
-    }
-  }
-}))*/
-
 Buzz.helpers({
   formatedCaption: function() {
     var caption = this.caption;
     return caption.replace(/\s+/g, '-').toLowerCase();
   }
 });
-
 
   AdminConfig = {
   collections: {

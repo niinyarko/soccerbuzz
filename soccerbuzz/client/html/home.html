@@ -24,23 +24,20 @@
                       </div>
                        <div class="panel-footer">
                              <div id="buzz-social">
-                           <!-- <p class="para-inline">posted by: {{username _id}}</p> -->
                             <p class="para-inline"><i class="fa fa-clock-o"></i>
                              {{ tm_now createdAt}}
                             </p>
-                          <!--     <p class="para-inline">
-                              <i class="glyphicon glyphicon-comment"></i>
-                              <a href="{{urlFor 'showBuzz' _id=_id slug=formatedCaption}}"><div class="fb-comments-count" data-href="{{urlFor 'showBuzz' _id=_id slug=formatedCaption}}">0</div> comments</a>
-                             {{commentsCount _id}}
-                             </p> -->
                              <div class="comment-div">
-                             <p>2 comments</p>
+                             <p><a href="{{urlFor 'showBuzz' _id=_id slug=formatedCaption}}">        {{commentsCount}} {{commentString}}
+                             <div id="comments-box-hide">{{> commentsBox id=_id}}</div>
+                             </a>
+                             </p>
                               <a href="{{urlFor 'showBuzz' _id=_id slug=formatedCaption}}" class="btn btn-default btn-sm" title="comment">
                                 <span class="icon-comment"></span>
                               </a>
                              </div>
                             <div class="vote-buttons">
-                                <p>{{score}} points</p>
+                                <p>{{score}} {{scoreString score}}</p>
                                <a href="#" class="btn btn-default btn-sm" data-action="increment">
                                 <span class="icon-arrow-up"></span>
                                </a>
@@ -120,6 +117,7 @@
             </div>
         </div>
     {{> buzzModal}}
+    {{> loginModalPop}}
 </template>
 
 <template name="showBuzzTemplate">
@@ -136,7 +134,7 @@
                             <!-- <p class="para-inline">posted by: {{username _id}}</p> -->
                              <p class="para-inline">
                               <i class="glyphicon glyphicon-comment"></i>
-                              {{commentsCount _id}}{{commentString}}
+                              {{commentsCount _id}} {{commentString _id}}
                              </p>
                               <p class="para-inline"><i class="fa fa-clock-o"></i>
                               {{ tm_now createdAt}}

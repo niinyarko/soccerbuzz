@@ -15,7 +15,7 @@ Router.route("/", function() {
     data: function() {
         GAnalytics.pageview();
         return {
-          buzz: Buzz.find({}, {sort: {createdAt: -1}})
+          buzz: Buzz.find({}, {sort: {score: -1}})
         }
     }
 })

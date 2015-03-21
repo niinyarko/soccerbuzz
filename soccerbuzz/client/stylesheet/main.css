@@ -7,7 +7,9 @@
     margin: 0 auto;
 
 }
-
+#comments-box-hide {
+  display: none
+}
 #fb-like-small {
 margin-top: 10px;
 margin-bottom: 10px;
@@ -406,12 +408,17 @@ color: #eeeeee;
 .comment-div{
   display: inline;
   margin-right: 5px;
+  color: #999;
+}
+.comment-div a {
+  color: #999;
 }
 .comment-div p {
   display: inline;
 }
 .vote-buttons {
   display: inline;
+  color: #999;
 }
 
 .vote-buttons p {
@@ -508,6 +515,12 @@ padding: 20px*/
 }
 
 #signinForm {
+margin-top: 20px;
+margin-bottom: 30px;
+display: none;
+
+}
+#signinFormPop {
 margin-top: 20px;
 margin-bottom: 30px;
 display: none;

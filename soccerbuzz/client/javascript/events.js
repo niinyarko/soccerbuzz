@@ -52,6 +52,37 @@ Template.loginButtonsTemplate.events({
     }
 });
 
+Template.loginModalPop.events({
+  'click .button-facebook': function() {
+    return Meteor.loginWithFacebook({
+      requestPermissions: ['email']
+    }, function(error) {
+      if (error) {
+        return console.log(error.reason);
+      }
+    });
+  },
+  'click .button-twitter': function() {
+    return Meteor.loginWithTwitter(function(error) {
+      if (error) {
+        return console.log(error.reason);
+      }
+    });
+  },
+
+  "click .button-google": function() {
+    return Meteor.loginWithGoogle(function(error) {
+      if (error) {
+        return console.log(error.reason);
+      }
+    });
+  },
+
+  "click #email-options": function() {
+        $("#signinForm").toggle();
+    }
+});
+
 Template.modalLogin.events({
   'click .button-facebook': function() {
     return Meteor.loginWithFacebook({
@@ -86,6 +117,7 @@ Template.modalLogin.events({
 Accounts.onLogin(function() {
   $("#loginModal").modal("hide");
   $("#overlay").hide();
+  $("#popLogin").modal("hide");
   Router.go("home");
 });
 
@@ -107,7 +139,7 @@ Template.home.events({
   },
   "click [data-action='cta-upload-btn']": function() {
     if(!Meteor.user()) {
-      swal("Please signin to upload your image.");
+      $("#popLogin").modal("show")
     }
     else {
        $("#buzzModal").modal("show");
@@ -118,9 +150,10 @@ Template.home.events({
     handle.loadNextPage();
   },
   "click [ data-action='increment']": function() {
+    if (!Meteor.user()) {$("#popLogin").modal("show")};
     var buzzId = this._id;
     var userId = Meteor.userId();
-    var check1 = Meteor.users.findOne(userId).profile;
+    var check = Meteor.users.findOne(userId).profile;
       if (typeof(check) == "undefined") {
            Meteor.users.update(Meteor.userId(), {$push: {"profile.alreadyVotedInc": buzzId}});
            Buzz.update(buzzId, {$inc: {score: 1} });
@@ -139,6 +172,7 @@ Template.home.events({
 }
 },
  "click [ data-action='decrement']": function() {
+    if (!Meteor.user()) {$("#popLogin").modal("show")};
     var buzzId = this._id;
     var userId = Meteor.userId();
     var check = Meteor.users.findOne(userId).profile;
