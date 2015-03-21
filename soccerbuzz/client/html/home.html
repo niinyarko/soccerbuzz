@@ -10,6 +10,9 @@
                   visible-xs">
                     Click here to upload your image
                   </button>
+                  <div class="visible-xs" id="fb-like-small">
+                   <div class="fb-like-box" data-href="https://www.facebook.com/soccabuzz" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="false" data-show-border="false"></div>
+                  </div>
                 </div>
                    {{#each buzz}}
                    <div class="panel panel-default">
@@ -30,9 +33,21 @@
                               <a href="{{urlFor 'showBuzz' _id=_id slug=formatedCaption}}"><div class="fb-comments-count" data-href="{{urlFor 'showBuzz' _id=_id slug=formatedCaption}}">0</div> comments</a>
                              {{commentsCount _id}}
                              </p> -->
-                             <a href="{{urlFor 'showBuzz' _id=_id slug=formatedCaption}}" class="ui icon button" title="comment">
-                                <i class="comment icon"></i>
-                            </a>
+                             <div class="comment-div">
+                             <p>2 comments</p>
+                              <a href="{{urlFor 'showBuzz' _id=_id slug=formatedCaption}}" class="btn btn-default btn-sm" title="comment">
+                                <span class="icon-comment"></span>
+                              </a>
+                             </div>
+                            <div class="vote-buttons">
+                                <p>{{score}} points</p>
+                               <a href="#" class="btn btn-default btn-sm" data-action="increment">
+                                <span class="icon-arrow-up"></span>
+                               </a>
+                               <a href="#" class="btn btn-default btn-sm" data-action="decrement">
+                                <span class="icon-arrow-down"></span>
+                              </a>
+                            </div>
                             <ul class="sharing-buttons hidden-xs">
                               <li>
                                    <a href="http://www.facebook.com/sharer.php?u={{urlFor 'showBuzz' _id=_id slug=formatedCaption}}" target="_blank" class="btn btn-block btn-social btn-facebook">
@@ -112,7 +127,7 @@
           <div class="row">
             <div class="col-sm-12" id="show-buzz-wrap">
                   <div class="row">
-                      <div class="col-sm-8 col-sm-offset-2">
+                      <div class="col-sm-8 col-sm-offset-2 col-xs-12">
                          <div id="image-div">
                             <img src="{{imageUrl}}" class="img-responsive" />
                           </div>
@@ -121,7 +136,7 @@
                             <!-- <p class="para-inline">posted by: {{username _id}}</p> -->
                              <p class="para-inline">
                               <i class="glyphicon glyphicon-comment"></i>
-                              <a href="{{urlFor 'showBuzz' _id=_id slug=formatedCaption}}"><div class="fb-comments-count" data-href="{{urlFor 'showBuzz' _id=_id slug=formatedCaption}}">0</div> comments</a>
+                              {{commentsCount _id}}{{commentString}}
                              </p>
                               <p class="para-inline"><i class="fa fa-clock-o"></i>
                               {{ tm_now createdAt}}
@@ -144,34 +159,10 @@
                                 </a>
                               </li>
                          </ul>
-                        <section id="comments-box">
-                            <div class="row">
-                              <div class="col-sm-8 col-sm-offset-2">
-                                {{#autoForm collection="Comments" id="insertCommentForm" type="insert"}}
-                          <fieldset>
-                            {{> afQuickField name='comment' label=false rows=4 placeholder="Share your thoughts" }}
-                          </fieldset>
-                            <div class="submit-div">
-                            <button type="submit" class="btn btn-primary" data-action="add-comment">
-                              Submit
-                            </button>
-                            </div>
-                            {{/autoForm}}
-                               <p id="fb-comment">Or add comments using your Facebook account</p>
-                               <div class="fb-comments" data-href="{{urlFor 'showBuzz' _id=_id slug=formatedCaption}}" data-numposts="5" data-colorscheme="light" data-width="490"> 
-                                </div>
-                              {{#if isComments _id}}
-                                <button class="btn btn-block btn-toggle" data-action="comments-toggle">Hide Comments
-                                </button>
-                              {{/if}}
-                                <div id="commentsShow">
-                                  {{#each buzzComments _id}}
-                                  {{> commentsTemplate}}
-                                  {{/each}}
-                                </div> 
-                            </div>
-                            </div>
-                      </section> 
+
+                      <div class="comment-section">
+                        {{> commentsBox id=_id}}
+                      </div>
                       </div>
                   </div>
             </div>

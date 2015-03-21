@@ -11,6 +11,12 @@ Signups.attachSchema(new SimpleSchema({
 Buzz = new Mongo.Collection("buzzes");
 
 Buzz.attachSchema(new SimpleSchema({
+  score: {
+    type: Number,
+    autoform: {
+      omit: true
+    }
+  },
   caption: {
     type: String,
     label: "Add a caption"
@@ -50,7 +56,7 @@ Buzz.attachSchema(new SimpleSchema({
   }
 }))
 
-Comments = new Mongo.Collection("comments");
+/*Comments = new Mongo.Collection("comments");
 
 Comments.attachSchema(new SimpleSchema({
   comment: {
@@ -84,7 +90,7 @@ Comments.attachSchema(new SimpleSchema({
       }
     }
   }
-}))
+}))*/
 
 Buzz.helpers({
   formatedCaption: function() {
@@ -92,3 +98,11 @@ Buzz.helpers({
     return caption.replace(/\s+/g, '-').toLowerCase();
   }
 });
+
+
+  AdminConfig = {
+  collections: {
+    Buzz: {},
+    Comments: {}
+  }
+};

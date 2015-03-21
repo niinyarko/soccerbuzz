@@ -1,10 +1,3 @@
-Template.profile.events({
-    "click [data-action='new-buzz']": function() {
-        $("#buzzModal").modal("show");
-    }
-})
-
-
 Template.navbar.events({
    "click [data-action='signin-btn-small']": function() {
         $("#loginModal").modal("show");
@@ -46,7 +39,7 @@ Template.loginButtonsTemplate.events({
     });
   },
 
-  "click [data-action='google-auth']": function() {
+  "click .button-google": function() {
     return Meteor.loginWithGoogle(function(error) {
       if (error) {
         return console.log(error.reason);
@@ -100,6 +93,11 @@ Accounts.onLogout(function() {
   Router.go("home");
 });
 
+Template.buzzModal.events({
+  "hidden.bs.modal #buzzModal": function() {
+    $("#insertBuzzForm").trigger('reset');
+  }
+})
 
 Template.home.events({
   "click [data-action='showImage']": function(e,t) {
@@ -118,8 +116,69 @@ Template.home.events({
   },
   "click [data-action='load-btn']": function() {
     handle.loadNextPage();
-  }
+  },
+  "click [ data-action='increment']": function() {
+    var buzzId = this._id;
+    var userId = Meteor.userId();
+    var check1 = Meteor.users.findOne(userId).profile;
+      if (typeof(check) == "undefined") {
+           Meteor.users.update(Meteor.userId(), {$push: {"profile.alreadyVotedInc": buzzId}});
+           Buzz.update(buzzId, {$inc: {score: 1} });
+    }
+    else {
+        Meteor.users.update(Meteor.userId(), {$push: {"profile.alreadyVotedInc": "", "profile.alreadyVotedDec": ""}});
+        if(checkIfVotedInc(userId, buzzId)) {
+          return;
+        }
+        else
+        {
+          Buzz.update(buzzId, {$inc: {score: 1} });
+          Meteor.users.update(Meteor.userId(), {$push: {"profile.alreadyVotedInc": buzzId}})
+          return;
+        }
+}
+},
+ "click [ data-action='decrement']": function() {
+    var buzzId = this._id;
+    var userId = Meteor.userId();
+    var check = Meteor.users.findOne(userId).profile;
+      if (typeof(check) == "undefined") {
+           Meteor.users.update(Meteor.userId(), {$push: {"profile.alreadyVotedDec": buzzId}});
+           Buzz.update(buzzId, {$inc: {score: -1} });
+    }
+    else {
+         Meteor.users.update(Meteor.userId(), {$push: {"profile.alreadyVotedInc": "", "profile.alreadyVotedDec": ""}});
+        if(checkIfVotedDec(userId, buzzId)) {
+          return;
+        }
+        else
+        {
+          Buzz.update(buzzId, {$inc: {score: -1} });
+          Meteor.users.update(Meteor.userId(), {$push: {"profile.alreadyVotedDec": buzzId}})
+          return;
+        }
+}
+}
+
 })
+
+checkIfVotedInc = function(userId, buzzId) {
+  var alreadyVoted = Meteor.users.findOne(userId).profile.alreadyVotedInc;
+       for (var i=0; i < alreadyVoted.length; i++) {
+          if (alreadyVoted[i] == buzzId) {
+            return true;
+    }
+    }
+};
+
+checkIfVotedDec = function(userId, buzzId) {
+  var alreadyVoted = Meteor.users.findOne(userId).profile.alreadyVotedDec;
+       for (var i=0; i < alreadyVoted.length; i++) {
+          if (alreadyVoted[i] == buzzId) {
+            return true;
+    }
+    }
+};
 
 Template.showBuzzTemplate.events({
   "click [data-action='comments-toggle']": function() {

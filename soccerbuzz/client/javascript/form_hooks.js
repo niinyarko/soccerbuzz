@@ -1,7 +1,12 @@
   AutoForm.hooks({
   insertBuzzForm: {
+     formToDoc: function(doc, ss, formId) {
+        doc.score = 0;
+        return doc;
+    },
     onSubmit: function (insertDoc, updateDoc, currentDoc) {
     Buzz.insert({
+      score: insertDoc.score,
       caption: insertDoc.caption,
       imageUrl: Session.get("imageUrl")
     }, function(err, id) {

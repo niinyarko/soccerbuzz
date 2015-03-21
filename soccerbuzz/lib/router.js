@@ -6,8 +6,17 @@ Router.route("/", function() {
     this.render("home");
 },
 {   name: "home",
+     waitOn: function(){
+      Tracker.autorun(function() {
+      handle = Meteor.subscribeWithPagination('allBuzzes', 20);
+      return handle;
+      })
+    },
     data: function() {
         GAnalytics.pageview();
+        return {
+          buzz: Buzz.find({}, {sort: {createdAt: -1}})
+        }
     }
 })
 
@@ -25,6 +34,7 @@ Router.route("/:_id/:slug", function() {
      waitOn: function(){
       return Meteor.subscribe("allBuzzes");
       },
+      fastRender: true,
     data: function() {
         GAnalytics.pageview();
         var _id = this.params._id;

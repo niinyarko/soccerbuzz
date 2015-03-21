@@ -7,6 +7,12 @@
     margin: 0 auto;
 
 }
+
+#fb-like-small {
+margin-top: 10px;
+margin-bottom: 10px;
+}
+
 #load-div {
   margin-bottom: 30px;
    cursor: pointer;
@@ -346,7 +352,7 @@ margin-left: 10px;
 }
 
 .btn-facebook {
-    width: 200px;
+    width: 150px;
     background-color: #3b5998;
     border: 0;
     color: #fff;
@@ -379,13 +385,43 @@ color: #eeeeee;
 color: #eeeeee;
 }
 .btn-twitter {
-    width: 200px;
+    width: 150px;
     background-color: #55acee;
     border: 0;
     color: #fff;
     display: inline-block;
 }
 
+.icon-arrow-down:before {
+  content:"\f063";
+  font-family: FontAwesome;
+  font-size: 15px;
+}
+.icon-comment:before {
+   content:"\f075";
+  font-family: FontAwesome;
+  font-size: 15px;
+}
+
+.comment-div{
+  display: inline;
+  margin-right: 5px;
+}
+.comment-div p {
+  display: inline;
+}
+.vote-buttons {
+  display: inline;
+}
+
+.vote-buttons p {
+  display: inline;
+}
+.icon-arrow-up:before{
+  content:"\f062";
+  font-family: FontAwesome;
+  font-size: 15px;
+}
 .btn-twitter-small {
     background-color: #55acee;
     border: 0;
