@@ -20,13 +20,6 @@ Router.route("/", function() {
     }
 })
 
-
-Router.route("/profile", function() {
-    this.render("profile");
-},
-{   name: "profile"
-})
-
 Router.route("/:_id/:slug", function() {
     this.render("showBuzzTemplate");
 },

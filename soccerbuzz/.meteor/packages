@@ -29,5 +29,6 @@ percolate:paginated-subscription
 natestrauser:font-awesome
 meteorhacks:fast-render
 accounts-google
-arkham:comments-ui
 yogiben:admin
+jparker:gravatar
+bengott:avatar

@@ -56,6 +56,98 @@ Buzz.attachSchema(new SimpleSchema({
   }
 }))
 
+Comments = new Mongo.Collection("comments");
+
+Comments.attachSchema(new SimpleSchema({
+  comment: {
+    type: String
+  },
+  buzzId: {
+    type: String,
+    autoform: {
+      omit: true
+    }
+  },
+    likes: {
+    type: Number,
+     autoform: {
+      omit: true
+    }
+  },
+   owner: {
+    type: String,
+    autoform: {
+      omit: true
+    },
+      autoValue: function(){
+      if (this.isInsert){
+        return Meteor.userId();
+      }
+    }
+  },
+   createdAt: {
+    type: Date,
+    autoform: {
+      omit: true
+    },
+    autoValue: function(){
+      if (this.isInsert){
+        return new Date();
+      }
+    }
+  }
+}))
+
+
+Replies = new Mongo.Collection("replies");
+
+Replies.attachSchema(new SimpleSchema({
+  reply: {
+    type: String
+  },
+  commentId: {
+    type: String,
+    autoform: {
+      omit: true
+    }
+  },
+  buzzId: {
+    type: String,
+    autoform: {
+      omit: true
+    }
+  },
+   likes: {
+    type: Number,
+     autoform: {
+      omit: true
+    }
+  },
+   owner: {
+    type: String,
+    autoform: {
+      omit: true
+    },
+      autoValue: function(){
+      if (this.isInsert){
+        return Meteor.userId();
+      }
+    }
+  },
+   createdAt: {
+    type: Date,
+    autoform: {
+      omit: true
+    },
+    autoValue: function(){
+      if (this.isInsert){
+        return new Date();
+      }
+    }
+  }
+}))
+
+
 Buzz.helpers({
   formatedCaption: function() {
     var caption = this.caption;
@@ -69,3 +161,11 @@ Buzz.helpers({
     Comments: {}
   }
 };
+
+
+/*Comments.helpers({
+  comments: function () {
+    var buzzId = this._id;
+    return Comments.find({buzzId: buzzId});
+  }
+});*/

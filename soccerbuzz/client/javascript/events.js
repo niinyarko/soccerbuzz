@@ -1,3 +1,23 @@
+Template.commentsTemplate.events({
+  'click .reply-action': function (e) {
+    var commentId = e.currentTarget.id;
+    Session.set("commentId", commentId);
+    $("#replies-box").show();
+  },
+  "click .thumbs-up-action-comment": function(e) {
+    var _id = e.currentTarget.id;
+    Comments.update(_id, {$set: {likes: 1} });
+  }
+});
+
+Template.repliesTemplate.events({
+  'click .thumbs-up-reply': function (e) {
+    var _id = e.currentTarget.id;
+     Replies.update(_id, {$set: {likes: 1} });
+  }
+});
+
+
 Template.navbar.events({
    "click [data-action='signin-btn-small']": function() {
         $("#loginModal").modal("show");
@@ -153,44 +173,66 @@ Template.home.events({
     if (!Meteor.user()) {$("#popLogin").modal("show")};
     var buzzId = this._id;
     var userId = Meteor.userId();
-    var check = Meteor.users.findOne(userId).profile;
-      if (typeof(check) == "undefined") {
-           Meteor.users.update(Meteor.userId(), {$push: {"profile.alreadyVotedInc": buzzId}});
+    var checkVoteStatus = Meteor.users.findOne(userId).profile;
+  
+      if (typeof(checkVoteStatus) == "undefined") {
            Buzz.update(buzzId, {$inc: {score: 1} });
+           Meteor.users.update(Meteor.userId(), {$push: {"profile.alreadyVotedInc": buzzId}});
     }
     else {
-        Meteor.users.update(Meteor.userId(), {$push: {"profile.alreadyVotedInc": "", "profile.alreadyVotedDec": ""}});
+      if (typeof(checkVoteStatus.alreadyVotedInc) == "undefined") {
+          Buzz.update(buzzId, {$inc: {score: 1} });
+          Meteor.users.update(Meteor.userId(), {$push: {"profile.alreadyVotedInc": buzzId}});
+      }
+      else {
         if(checkIfVotedInc(userId, buzzId)) {
-          return;
+          $("[ data-action='increment']").toggleClass("hasVoted");
+          if ($("[ data-action='increment']").hasClass("hasVoted")){
+            Buzz.update(buzzId, {$inc: {score: -1} });
+          }
+          else {
+            Buzz.update(buzzId, {$inc: {score: 1} });
+          }
         }
-        else
-        {
+        else {
           Buzz.update(buzzId, {$inc: {score: 1} });
           Meteor.users.update(Meteor.userId(), {$push: {"profile.alreadyVotedInc": buzzId}})
           return;
         }
+      }
 }
 },
- "click [ data-action='decrement']": function() {
+  "click [ data-action='decrement']": function() {
     if (!Meteor.user()) {$("#popLogin").modal("show")};
     var buzzId = this._id;
     var userId = Meteor.userId();
-    var check = Meteor.users.findOne(userId).profile;
-      if (typeof(check) == "undefined") {
-           Meteor.users.update(Meteor.userId(), {$push: {"profile.alreadyVotedDec": buzzId}});
+    var checkVoteStatus = Meteor.users.findOne(userId).profile;
+  
+      if (typeof(checkVoteStatus) == "undefined") {
            Buzz.update(buzzId, {$inc: {score: -1} });
+           Meteor.users.update(Meteor.userId(), {$push: {"profile.alreadyVotedDec": buzzId}});
     }
     else {
-         Meteor.users.update(Meteor.userId(), {$push: {"profile.alreadyVotedInc": "", "profile.alreadyVotedDec": ""}});
-        if(checkIfVotedDec(userId, buzzId)) {
-          return;
-        }
-        else
-        {
+      if (typeof(checkVoteStatus.alreadyVotedDec) == "undefined") {
           Buzz.update(buzzId, {$inc: {score: -1} });
-          Meteor.users.update(Meteor.userId(), {$push: {"profile.alreadyVotedDec": buzzId}})
+          Meteor.users.update(Meteor.userId(), {$push: {"profile.alreadyVotedDec": buzzId}});
+      }
+      else {
+        if(checkIfVotedDec(userId, buzzId)) {
+          $("[ data-action='decrement']").toggleClass("hasVoted");
+          if ($("[ data-action='decrement']").hasClass("hasVoted")){
+            Buzz.update(buzzId, {$inc: {score: 1} });
+          }
+          else {
+            Buzz.update(buzzId, {$inc: {score: -1} });
+          }
+        }
+        else {
+          Buzz.update(buzzId, {$inc: {score: -1} });
+          Meteor.users.update(Meteor.userId(), {$push: {"profile.alreadyVotedDec": buzzId}});
           return;
         }
+      }
 }
 }
 
@@ -221,7 +263,9 @@ Template.showBuzzTemplate.events({
     $(".btn-toggle").html("<p>" + txt + "</p>");  
   },
   "click [data-action='add-comment']": function() {
+    if(!Meteor.user()) {
     swal("Sorry! you need to signin to comment");
+  }
   }
 })
 

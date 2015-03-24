@@ -7,14 +7,16 @@
     margin: 0 auto;
 
 }
-#comments-box-hide {
-  display: none
-}
+
 #fb-like-small {
 margin-top: 10px;
 margin-bottom: 10px;
 }
 
+
+#replies-box {
+  margin-top: 5px;
+}
 #load-div {
   margin-bottom: 30px;
    cursor: pointer;
@@ -53,9 +55,9 @@ color: #eeeeee;
     background-color: #efefef;
     border-radius: 5px;
     margin-bottom: 20px;
-    -webkit-box-shadow: 0px 1px 5px 0px rgba(50, 50, 50, 0.75);
+ /*   -webkit-box-shadow: 0px 1px 5px 0px rgba(50, 50, 50, 0.75);
     -moz-box-shadow:    0px 1px 5px 0px rgba(50, 50, 50, 0.75);
-    box-shadow:         0px 1px 5px 0px rgba(50, 50, 50, 0.75);
+    box-shadow:         0px 1px 5px 0px rgba(50, 50, 50, 0.75);*/
 }
 
 #fb-comment {
@@ -117,9 +119,30 @@ hr {
     min-height: 100px;
     margin-bottom: 20px;
 }
+#username {
+font-size: 15px;
+font-weight: bold;
+}
 
 .sharing-buttons{
   list-style: none;
+  text-decoration: none;
+  margin-left: 270px;
+}
+
+.sharing-buttons-main {
+  list-style: none;
+  text-decoration: none;
+}
+.sharing-buttons-main li{
+  display: inline;
+  margin-right: 5px;
+}
+
+.sharing-buttons-main a{
+  border: 1px solid;
+  padding: 0.5em;
+  color: #fff;
   text-decoration: none;
 }
 
@@ -148,11 +171,18 @@ hr {
   color: #eee;
   text-decoration: none;
 }
+.sharing-buttons-main a:hover{
+  color: #eee;
+  text-decoration: none;
+}
 
 .fa{
   padding: 0.5em;
 }
 
+#replies-box {
+  display: none;
+}
 #main-wrapper {
      min-height: 100%;
      margin-top: 60px;
@@ -178,19 +208,6 @@ hr {
 #image-div {
     margin-bottom: 20px;
     text-align: center;
-}
-
-#image-details {
-    padding: 10px;
-    text-align: left;
-    min-height: 100px;
-    -webkit-box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.75);
-    -moz-box-shadow:    0px 3px 5px 0px rgba(50, 50, 50, 0.75);
-    box-shadow:         0px 3px 5px 0px rgba(50, 50, 50, 0.75);
-    border-radius: 4px;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    margin-bottom: 20px;
 }
 
 p.login-divider:before,  p.login-divider:after {
@@ -421,6 +438,9 @@ color: #eeeeee;
 .vote-buttons {
   display: inline;
   color: #999;
+}
+.vote-buttons p {
+  display: inline;
 }
 .comment-vote-small {
   color: #999;

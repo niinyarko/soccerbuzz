@@ -10,17 +10,17 @@ Buzz.allow({
     }
 });
 
-/*Comments.allow({
+Comments.allow({
     insert: function (userId, doc) {
         return (userId);
     },
     update: function (userId, doc, fields, modifier) {
-        return (userId && doc.owner === userId);
+        return (userId && fields[0] === "likes");
     },
     remove: function (userId, doc) {
         return (userId && (userId === doc.owner));
     }
-});*/
+});
 
 Meteor.users.allow({
     update: function (userId, doc, fields, modifier) {
@@ -31,5 +31,17 @@ Meteor.users.allow({
 Signups.allow({
     insert: function (userId, doc) {
         return true;
+    }
+});
+
+Replies.allow({
+    insert: function (userId, doc) {
+         return (userId);
+    },
+    update: function (userId, doc, fields, modifier) {
+        return (userId && fields[0] === "likes");
+    },
+    remove: function (userId, doc) {
+        //...
     }
 });

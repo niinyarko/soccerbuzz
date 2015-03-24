@@ -27,6 +27,7 @@ AutoForm.hooks({
   insertCommentForm: {
     formToDoc: function(doc, ss, formId) {
         doc.buzzId = Router.current().params._id;
+        doc.likes = 0;
         return doc;
     },
 
@@ -50,4 +51,21 @@ AutoForm.hooks({
     }
   }
 });
+
+
+AutoForm.hooks({
+  insertReplyForm: {
+    formToDoc: function(doc, ss, formId) {
+        doc.commentId = Session.get("commentId");
+        doc.buzzId = Router.current().params._id;
+        return doc;
+        doc.likes = 0;
+    },
+
+     onSuccess: function(operation, result, template) {
+      $("#replies-box").hide();
+       swal("Thanks! your reply has been recorded");
+    }
+  }
+})
 
