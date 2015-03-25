@@ -1,42 +1,8 @@
-/*Template.showBuzzTemplate.helpers({
-    commentsCount: function (id) {
-        return Comments.get(id).count();
-    },
-    commentString: function(id) {
-        if (Comments.get(id).count() == 1) {
-            return "comment";
-        }
-        else {
-            return "comments";
-        }
-    }
-});
-
-Template.home.helpers({
-    commentsCount: function () {
-        return Comments.get(this._id).count();
-    },
-    commentString: function() {
-        if (Comments.get(this._id).count() == 1) {
-            return "comment";
-        }
-        else {
-            return "comments";
-        }
-    },
-    scoreString: function(score) {
-        if (score == 1) {
-            return "point";
-        }
-        else {
-            return "points";
-        }
-    }
-});*/ 
-
+Meteor.subscribe("users");
+Meteor.subscribe("commentReplies");
+Meteor.subscribe("buzzComments")
 
 Template.registerHelper("commentsCount", function(id) {
-  Meteor.subscribe("commentReplies");
   var commentsByDoc = Comments.find({buzzId: id},{sort: {createdAt: -1}}).count();
   var repliesToComment = Replies.find({buzzId: id},{sort: {createdAt: -1}}).count();
   var totalCount = commentsByDoc + repliesToComment;
@@ -44,7 +10,6 @@ Template.registerHelper("commentsCount", function(id) {
 })
 
 Template.registerHelper("commentString", function(id) {
-  Meteor.subscribe("commentReplies");
   var commentsByDoc = Comments.find({buzzId: id},{sort: {createdAt: -1}}).count();
   var repliesToComment = Replies.find({buzzId: id},{sort: {createdAt: -1}}).count();
   var totalCount = commentsByDoc + repliesToComment;
@@ -64,6 +29,7 @@ Template.registerHelper("scoreString", function(score){
       return "points";
   }
 })
+
 Template.commentsTemplate.helpers({
     imageUrl: function () {
         var email = 'niinyarko@yahoo.com';
@@ -74,43 +40,58 @@ Template.commentsTemplate.helpers({
         return url;
     },
     comments: function () {
-      Meteor.subscribe("buzzComments")
       var buzzId = this._id;
       return Comments.find({buzzId: buzzId});
-    },
-    username: function (id) {
-      var owner = Comments.findOne(id).owner;
-      var username = Meteor.users.findOne(owner).profile.name;
-      if (typeof(username) == "undefined") {
-        var userEmail = Meteor.users.findOne(owner).emails[0].address;
-        var index = userEmail.indexOf("@");
-        var name = userEmail.slice(0, index);
-        return name;
-      }
-      else {
-        return username;
-      }
     }
 });
 
-Template.repliesTemplate.helpers({
-    replies: function () {
-      Meteor.subscribe("commentReplies")
+
+Template.registerHelper("username", function() {
+  if(this.comment) {
       var commentId = this._id;
-      return Replies.find({commentId: commentId});
-    },
-    username: function (id) {
-      var owner = Replies.findOne(id).owner;
-      var username = Meteor.users.findOne(owner).profile.name;
-      if (typeof(username) == "undefined") {
+      var ownerId = Comments.findOne(commentId).owner;
+      var owner = Meteor.users.findOne(ownerId);
+
+      if(typeof(owner.profile || owner.profile.name) == "undefined") {
         var userEmail = Meteor.users.findOne(owner).emails[0].address;
         var index = userEmail.indexOf("@");
         var name = userEmail.slice(0, index);
         return name;
       }
       else {
-        return username;
+        var name = owner.profile.name
+        return name;
       }
+  }
+  else {
+    var replyId = this._id;
+    var ownerId = Replies.findOne(replyId).owner;
+    var owner = Meteor.users.findOne(ownerId);
+    if (typeof(owner.profile || owner.profile.name) == "undefined") {
+      var userEmail = Meteor.users.findOne(owner).emails[0].address;
+      var index = userEmail.indexOf("@");
+      var name = userEmail.slice(0, index);
+      return name;
+    }
+    else {
+      var name = owner.profile.name
+      return name;
+    }
+  }
+})
+
+Template.repliesTemplate.helpers({
+    replies: function () {
+      var commentId = this._id;
+      return Replies.find({commentId: commentId});
+    }
+});
+
+
+Template.showBuzzTemplate.helpers({
+    formatedCaption: function () {
+     var caption = this.buzz.caption;
+     return caption.replace(/\s+/g, '-').toLowerCase();
     }
 });
 

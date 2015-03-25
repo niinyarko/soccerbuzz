@@ -1,22 +1,40 @@
 var uploader = new ReactiveVar();
+window.URL = window.URL || window.webkitURL;
 
 Template.buzzModal.events({
     "change [data-action='image-upload']": function (event, template) {
         var upload = new Slingshot.Upload("soccerbuzz"),
               file = template.find("[data-action='image-upload']").files[0];
         if (file) {
-            upload.send(file, function (error, downloadUrl) {
-                uploader.set();
+            var img = new Image();
+            img.src = window.URL.createObjectURL( file );
+            img.onload = function() {
+                    var width = img.naturalWidth,
+                        height = img.naturalHeight;
 
-                if (error) {
-                    alert(error.message);
-                }
-                else {
-                    //TODO Call your method here
-                    Session.set("imageUrl", downloadUrl);
-                    // Meteor.users.update(Meteor.userId(), {$push: {"profile.files": downloadUrl}});
-                }
-            });
+                    window.URL.revokeObjectURL( img.src );
+
+                    if( width > 600 && height > 315 ) {
+                        upload.send(file, function (error, downloadUrl) {
+                            uploader.set();
+
+                            if (error) {
+                                alert(error.message);
+                            }
+                            else {
+                                //TODO Call your method here
+                                Session.set("imageUrl", downloadUrl);
+                                // Meteor.users.update(Meteor.userId(), {$push: {"profile.files": downloadUrl}});
+                            }
+                        });
+                    }
+                    else {
+                        swal({   
+                            title: "Image size is too small",   
+                            text: "Image should be atleast 600x315",  
+                           });
+                    }
+                };
         }
 
         uploader.set(upload);

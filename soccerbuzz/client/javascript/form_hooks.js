@@ -28,6 +28,7 @@ AutoForm.hooks({
     formToDoc: function(doc, ss, formId) {
         doc.buzzId = Router.current().params._id;
         doc.likes = 0;
+        doc.dislikes= 0;
         return doc;
     },
 

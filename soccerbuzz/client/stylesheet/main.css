@@ -13,8 +13,21 @@ margin-top: 10px;
 margin-bottom: 10px;
 }
 
+.glyphicon-thumbs-down {
+  color: red;
+}
 
-#replies-box {
+.hide-box {
+  display: none;
+}
+.glyphicon-thumbs-up {
+  color: green;
+}
+
+.replies-box-hide {
+  display: none;
+}
+.replies-box {
   margin-top: 5px;
 }
 #load-div {
@@ -180,9 +193,6 @@ font-weight: bold;
   padding: 0.5em;
 }
 
-#replies-box {
-  display: none;
-}
 #main-wrapper {
      min-height: 100%;
      margin-top: 60px;

@@ -31,20 +31,29 @@ Router.route("/:_id/:slug", function() {
     data: function() {
         GAnalytics.pageview();
         var _id = this.params._id;
-        return Buzz.findOne(_id);
+        return {
+         buzz: Buzz.findOne(_id)
+      }
     },
     onAfterAction: function() {
-        var buzz = this.data();
+        var buzz;
+        if (!Meteor.isClient) {
+              return;
+            }
+
+        buzz = this.data().buzz;
         SEO.set({
-        title: buzz.caption,
-        meta: {
-          'description': buzz.caption
-        },
-        og: {
-          'title': buzz.caption,
-          'image': buzz.imageUrl
-        }
-      });
+               title: buzz.caption,
+               meta: {
+                 'description': buzz.caption
+               },
+               og: {
+                 'title': buzz.caption,
+                 'image': buzz.imageUrl,
+                 'description': buzz.caption,
+                 'site_name': 'soccabuzz'
+               }
+             });
     }
     
 })

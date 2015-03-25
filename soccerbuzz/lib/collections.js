@@ -23,7 +23,7 @@ Buzz.attachSchema(new SimpleSchema({
   },
     imageUrl: {
     type: String,
-    label: "choose files",
+    label: "choose files (image should be atleast 600x315)",
     autoform: {
        afFieldInput: {
         type: "file",
@@ -74,6 +74,12 @@ Comments.attachSchema(new SimpleSchema({
       omit: true
     }
   },
+    dislikes: {
+    type: Number,
+     autoform: {
+      omit: true
+    }
+  },
    owner: {
     type: String,
     autoform: {
@@ -118,6 +124,12 @@ Replies.attachSchema(new SimpleSchema({
     }
   },
    likes: {
+    type: Number,
+     autoform: {
+      omit: true
+    }
+  },
+   dislikes: {
     type: Number,
      autoform: {
       omit: true

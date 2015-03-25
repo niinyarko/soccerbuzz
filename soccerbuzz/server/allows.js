@@ -15,7 +15,7 @@ Comments.allow({
         return (userId);
     },
     update: function (userId, doc, fields, modifier) {
-        return (userId && fields[0] === "likes");
+        return (userId && fields[0] === "likes" || "dislikes");
     },
     remove: function (userId, doc) {
         return (userId && (userId === doc.owner));
@@ -39,7 +39,7 @@ Replies.allow({
          return (userId);
     },
     update: function (userId, doc, fields, modifier) {
-        return (userId && fields[0] === "likes");
+        return (userId && fields[0] === "likes" || "dislikes");
     },
     remove: function (userId, doc) {
         //...
