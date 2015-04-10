@@ -5,7 +5,7 @@
         return doc;
     },
     onSubmit: function (insertDoc, updateDoc, currentDoc) {
-    Buzz.insert({
+    Posts.insert({
       score: insertDoc.score,
       caption: insertDoc.caption,
       imageUrl: Session.get("imageUrl")
@@ -16,6 +16,9 @@
         else {
           $("#buzzModal").modal("hide");
           swal("Thanks! your image has been posted");
+          $("button.confirm").on("click", function(){
+            location.reload();
+          })
         }
     })
        return false;  
@@ -26,7 +29,7 @@
 AutoForm.hooks({
   insertCommentForm: {
     formToDoc: function(doc, ss, formId) {
-        doc.buzzId = Router.current().params._id;
+        doc.postId = Router.current().params._id;
         doc.likes = 0;
         doc.dislikes= 0;
         return doc;
@@ -58,7 +61,7 @@ AutoForm.hooks({
   insertReplyForm: {
     formToDoc: function(doc, ss, formId) {
         doc.commentId = Session.get("commentId");
-        doc.buzzId = Router.current().params._id;
+        doc.postId = Router.current().params._id;
         return doc;
         doc.likes = 0;
     },

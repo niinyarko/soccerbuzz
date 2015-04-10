@@ -14,7 +14,7 @@ Template.buzzModal.events({
 
                     window.URL.revokeObjectURL( img.src );
 
-                    if( width > 600 && height > 315 ) {
+                    if( width >= 450 && height >= 300 ) {
                         upload.send(file, function (error, downloadUrl) {
                             uploader.set();
 
@@ -31,7 +31,7 @@ Template.buzzModal.events({
                     else {
                         swal({   
                             title: "Image size is too small",   
-                            text: "Image should be atleast 600x315",  
+                            text: "Image should be atleast 450x300",  
                            });
                     }
                 };

@@ -1,17 +1,17 @@
 Meteor.subscribe("users");
 Meteor.subscribe("commentReplies");
-Meteor.subscribe("buzzComments")
+Meteor.subscribe("buzzComments");
 
 Template.registerHelper("commentsCount", function(id) {
-  var commentsByDoc = Comments.find({buzzId: id},{sort: {createdAt: -1}}).count();
-  var repliesToComment = Replies.find({buzzId: id},{sort: {createdAt: -1}}).count();
+  var commentsByDoc = Comments.find({postId: id},{sort: {createdAt: -1}}).count();
+  var repliesToComment = Replies.find({postId: id},{sort: {createdAt: -1}}).count();
   var totalCount = commentsByDoc + repliesToComment;
   return totalCount;
 })
 
 Template.registerHelper("commentString", function(id) {
-  var commentsByDoc = Comments.find({buzzId: id},{sort: {createdAt: -1}}).count();
-  var repliesToComment = Replies.find({buzzId: id},{sort: {createdAt: -1}}).count();
+  var commentsByDoc = Comments.find({postId: id},{sort: {createdAt: -1}}).count();
+  var repliesToComment = Replies.find({postId: id},{sort: {createdAt: -1}}).count();
   var totalCount = commentsByDoc + repliesToComment;
     if (totalCount == 1) {
             return "comment";
@@ -90,13 +90,27 @@ Template.repliesTemplate.helpers({
 
 Template.showBuzzTemplate.helpers({
     formatedCaption: function () {
-     var caption = this.buzz.caption;
+     var caption = this.post.caption;
      return caption.replace(/\s+/g, '-').toLowerCase();
     }
 });
 
 
+Template.registerHelper('getPicture', function(id){
+      var post = Posts.findOne(id);
+      var picture = post.imageUrl;
+      return picture;
+})
 
+Template.registerHelper('getDescription', function(id){
+      var post = Posts.findOne(id);
+      var caption = post.caption;
+      return caption;
+})
 
-
+Template.registerHelper('getName', function(id){
+      var post = Posts.findOne(id);
+      var name = post.caption;
+      return name;
+})
 

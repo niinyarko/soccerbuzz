@@ -8,9 +8,9 @@ Signups.attachSchema(new SimpleSchema({
   }
 }))
 
-Buzz = new Mongo.Collection("buzzes");
+Posts = new Mongo.Collection("posts");
 
-Buzz.attachSchema(new SimpleSchema({
+Posts.attachSchema(new SimpleSchema({
   score: {
     type: Number,
     autoform: {
@@ -23,11 +23,10 @@ Buzz.attachSchema(new SimpleSchema({
   },
     imageUrl: {
     type: String,
-    label: "choose files (image should be atleast 600x315)",
+    label: "select file (Image should be at least 450x300)",
     autoform: {
        afFieldInput: {
         type: "file",
-        multiple: true,
         id: "image"
       }
     }
@@ -62,7 +61,7 @@ Comments.attachSchema(new SimpleSchema({
   comment: {
     type: String
   },
-  buzzId: {
+  postId: {
     type: String,
     autoform: {
       omit: true
@@ -117,7 +116,7 @@ Replies.attachSchema(new SimpleSchema({
       omit: true
     }
   },
-  buzzId: {
+  postId: {
     type: String,
     autoform: {
       omit: true
@@ -160,24 +159,54 @@ Replies.attachSchema(new SimpleSchema({
 }))
 
 
-Buzz.helpers({
+Posts.helpers({
   formatedCaption: function() {
     var caption = this.caption;
     return caption.replace(/\s+/g, '-').toLowerCase();
   }
 });
 
-  AdminConfig = {
+AdminConfig = {
+  nonAdminRedirectRoute: 'entrySignIn',
   collections: {
-    Buzz: {},
-    Comments: {}
+    Posts: {
+      icon: 'camera',
+      tableColumns: [
+        {
+          label: 'Title',
+          name: 'caption'
+        }, {
+          label: 'Published',
+          name: 'createdAt'
+        }
+      ],
+    },
+    Comments: {
+            icon: 'comment',
+            tableColumns: [
+              {label: 'Content', name: 'comment'}
+            ],
+            showWidget: false
+    },
+    Signups: {
+            icon: 'user',
+            tableColumns: [
+              {label: 'Email', name: 'email'}
+            ]
+    }
   }
-};
-
-
+}
 /*Comments.helpers({
   comments: function () {
     var buzzId = this._id;
     return Comments.find({buzzId: buzzId});
   }
 });*/
+
+Comments.helpers({
+  buzzTitle: function () {
+    if (this.posts) {
+      return Posts.findOne(this.posts).title;
+    }
+  }
+})

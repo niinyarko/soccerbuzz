@@ -1,8 +1,7 @@
-Meteor.publish("allBuzzes", Meteor.bindEnvironment(function(limit) {
-    return Buzz.find({}, {sort: {createdAt: -1}, limit: limit});
-}, function(e){
-    throw(e);
-}));
+Meteor.publish('posts', function(limit) {
+  Meteor._sleepForMs(2000);
+  return Posts.find({}, {limit: limit});
+});
 
 Meteor.publish("buzzComments", Meteor.bindEnvironment(function() {
     return Comments.find({}, {sort: {createdAt: -1}});

@@ -1,3 +1,49 @@
+/*Template.streamTemplate.events({
+  "click [data-action='facebook-share']": function (e,t) {
+    // var url = e.currentTarget.data('url');
+    var url = e.currentTarget.getAttribute('data-url');
+    var _id = e.currentTarget.id;
+    FB.ui({
+      display: 'popup',
+      method: 'share_open_graph',
+      action_type: 'og.likes',
+      action_properties: JSON.stringify({
+          object: url,
+      })
+    }, function(response){});
+  }
+});*/
+
+Template.streamTemplate.events({
+  "click [data-action='load-btn']": function(event, instance) {
+      event.preventDefault();
+
+          // get current value for limit, i.e. how many posts are currently displayed
+          var limit = instance.limit.get();
+
+          // increase limit by 5 and update it
+          limit += 5;
+          instance.limit.set(limit);
+  },
+
+});
+
+
+
+
+Template.insertBuzzForm.events({
+  "keyup textarea#caption": function () {
+    var l = 140;
+    var str = $("textarea#caption").val();
+     var len = str.length;
+     if(len <= l) {
+           $("#txtLen").val(l-len);
+      } else {
+           $("textarea#caption").val(str.substr(0, 140));
+      }
+  }
+});
+
 Template.commentsTemplate.events({
   'click .reply-action': function (e) {
     var commentId = e.currentTarget.id;
@@ -270,9 +316,14 @@ Accounts.onLogout(function() {
 });
 
 Template.buzzModal.events({
-  "hidden.bs.modal #buzzModal": function() {
-    $("#insertBuzzForm").trigger('reset');
+  "hidden.bs.modal #buzzModal": function(e,t) {
+    /*$("#insertBuzzForm").trigger('reset');
+    $("#imageThumbnail").find('img').attr("src", "");*/
+    // $(this).removeData('bs.modal');
     $("#imageThumbnail").find('img').attr("src", "");
+    $("#imageThumbnail").hide();
+    $("#buzzModal").find('#insertBuzzForm')[0].reset();;
+
   }
 })
 
@@ -290,38 +341,38 @@ Template.home.events({
        $("#buzzModal").modal("show");
     }
    
-  },
-  "click [data-action='load-btn']": function() {
+  }
+  /*"click [data-action='load-btn']": function() {
     handle.loadNextPage();
-  },
+  }*/,
   "click [ data-action='increment']": function() {
     if (!Meteor.user()) {$("#popLogin").modal("show")};
-    var buzzId = this._id;
+    var postId = this._id;
     var userId = Meteor.userId();
     var checkVoteStatus = Meteor.users.findOne(userId).profile;
   
       if (typeof(checkVoteStatus) == "undefined") {
-           Buzz.update(buzzId, {$inc: {score: 1} });
-           Meteor.users.update(Meteor.userId(), {$push: {"profile.alreadyVotedInc": buzzId}});
+           Posts.update(postId, {$inc: {score: 1} });
+           Meteor.users.update(Meteor.userId(), {$push: {"profile.alreadyVotedInc": postId}});
     }
     else {
       if (typeof(checkVoteStatus.alreadyVotedInc) == "undefined") {
-          Buzz.update(buzzId, {$inc: {score: 1} });
-          Meteor.users.update(Meteor.userId(), {$push: {"profile.alreadyVotedInc": buzzId}});
+          Posts.update(postId, {$inc: {score: 1} });
+          Meteor.users.update(Meteor.userId(), {$push: {"profile.alreadyVotedInc": postId}});
       }
       else {
-        if(checkIfVotedInc(userId, buzzId)) {
+        if(checkIfVotedInc(userId, postId)) {
           $("[ data-action='increment']").toggleClass("hasVoted");
           if ($("[ data-action='increment']").hasClass("hasVoted")){
-            Buzz.update(buzzId, {$inc: {score: -1} });
+            Posts.update(postId, {$inc: {score: -1} });
           }
           else {
-            Buzz.update(buzzId, {$inc: {score: 1} });
+            Posts.update(postId, {$inc: {score: 1} });
           }
         }
         else {
-          Buzz.update(buzzId, {$inc: {score: 1} });
-          Meteor.users.update(Meteor.userId(), {$push: {"profile.alreadyVotedInc": buzzId}})
+          Posts.update(postId, {$inc: {score: 1} });
+          Meteor.users.update(Meteor.userId(), {$push: {"profile.alreadyVotedInc": postId}})
           return;
         }
       }
@@ -329,32 +380,32 @@ Template.home.events({
 },
   "click [ data-action='decrement']": function() {
     if (!Meteor.user()) {$("#popLogin").modal("show")};
-    var buzzId = this._id;
+    var postId = this._id;
     var userId = Meteor.userId();
     var checkVoteStatus = Meteor.users.findOne(userId).profile;
   
       if (typeof(checkVoteStatus) == "undefined") {
-           Buzz.update(buzzId, {$inc: {score: -1} });
-           Meteor.users.update(Meteor.userId(), {$push: {"profile.alreadyVotedDec": buzzId}});
+           Posts.update(postId, {$inc: {score: -1} });
+           Meteor.users.update(Meteor.userId(), {$push: {"profile.alreadyVotedDec": postId}});
     }
     else {
       if (typeof(checkVoteStatus.alreadyVotedDec) == "undefined") {
-          Buzz.update(buzzId, {$inc: {score: -1} });
-          Meteor.users.update(Meteor.userId(), {$push: {"profile.alreadyVotedDec": buzzId}});
+          Posts.update(postId, {$inc: {score: -1} });
+          Meteor.users.update(Meteor.userId(), {$push: {"profile.alreadyVotedDec": postId}});
       }
       else {
-        if(checkIfVotedDec(userId, buzzId)) {
+        if(checkIfVotedDec(userId, postId)) {
           $("[ data-action='decrement']").toggleClass("hasVoted");
           if ($("[ data-action='decrement']").hasClass("hasVoted")){
-            Buzz.update(buzzId, {$inc: {score: 1} });
+            Posts.update(postId, {$inc: {score: 1} });
           }
           else {
-            Buzz.update(buzzId, {$inc: {score: -1} });
+            Posts.update(postId, {$inc: {score: -1} });
           }
         }
         else {
-          Buzz.update(buzzId, {$inc: {score: -1} });
-          Meteor.users.update(Meteor.userId(), {$push: {"profile.alreadyVotedDec": buzzId}});
+          Posts.update(postId, {$inc: {score: -1} });
+          Meteor.users.update(Meteor.userId(), {$push: {"profile.alreadyVotedDec": postId}});
           return;
         }
       }
@@ -363,19 +414,19 @@ Template.home.events({
 
 })
 
-checkIfVotedInc = function(userId, buzzId) {
+checkIfVotedInc = function(userId, postId) {
   var alreadyVoted = Meteor.users.findOne(userId).profile.alreadyVotedInc;
        for (var i=0; i < alreadyVoted.length; i++) {
-          if (alreadyVoted[i] == buzzId) {
+          if (alreadyVoted[i] == postId) {
             return true;
     }
     }
 };
 
-checkIfVotedDec = function(userId, buzzId) {
+checkIfVotedDec = function(userId, postId) {
   var alreadyVoted = Meteor.users.findOne(userId).profile.alreadyVotedDec;
        for (var i=0; i < alreadyVoted.length; i++) {
-          if (alreadyVoted[i] == buzzId) {
+          if (alreadyVoted[i] == postId) {
             return true;
     }
     }
@@ -394,12 +445,64 @@ Template.showBuzzTemplate.events({
   }
 })
 
+isNotEmpty = function(value) {
+    if (value && value !== ''){
+        return true;
+    }
+    swal('Please fill in all required fields.');
+    return false;
+};
+
+isValidPassword = function(password) {
+    if (password.length < 6) {
+        swal('Your password should be 6 characters or longer.');
+        return false;
+    }
+    return true;
+};
+
+areValidPasswords = function(password, confirm) {
+    if (!isValidPassword(password)) {
+        return false;
+    }
+    else if (password !== confirm) {
+        swal('Your two passwords are not equivalent.');
+        return false;
+    }
+    else {
+      return true;
+    }
+};
+
+Template.ResetPassword.events({
+  'submit #resetPasswordForm': function(e, t) {
+    e.preventDefault();
+    var resetPasswordForm = $(e.currentTarget),
+        password = resetPasswordForm.find('#resetPasswordPassword').val(),
+        passwordConfirm = resetPasswordForm.find('#resetPasswordPasswordConfirm').val();
+ 
+    if (isNotEmpty(password) && areValidPasswords(password, passwordConfirm)) {
+      Accounts.resetPassword(Session.get('resetPassword'), password, function(err) {
+        if (err) {
+          swal('We are sorry but something went wrong.');
+        } else {
+          swal('Your password has been changed. Welcome back!');
+          Session.set('resetPassword', null);
+        }
+      });
+    }
+    return false;
+  }
+});
+
+Template.showBuzzTemplate.rendered = function () {
+  try {
+      FB.XFBML.parse();
+  }catch(e) {} 
+};
+
 Template.home.rendered = function () {
-   window.fbAsyncInit = function() {
-        FB.init({
-          appId      : '911652492188133',
-          xfbml      : true,
-          version    : 'v2.1'
-        });
-      };
+  try {
+      FB.XFBML.parse();
+  }catch(e) {}
 };

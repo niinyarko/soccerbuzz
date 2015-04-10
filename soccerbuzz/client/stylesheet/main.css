@@ -7,12 +7,18 @@
     margin: 0 auto;
 
 }
+#my-loader {
+  margin-top: 300px;
+}
 
 #fb-like-small {
 margin-top: 10px;
 margin-bottom: 10px;
 }
-
+.spinner-container {
+  margin-left: 250px;
+  margin-top: 50px;
+}
 .glyphicon-thumbs-down {
   color: red;
 }
@@ -23,7 +29,10 @@ margin-bottom: 10px;
 .glyphicon-thumbs-up {
   color: green;
 }
-
+.panel-heading a {
+  text-decoration: none;
+  color: #333;
+}
 .replies-box-hide {
   display: none;
 }
@@ -33,6 +42,9 @@ margin-bottom: 10px;
 #load-div {
   margin-bottom: 30px;
    cursor: pointer;
+}
+#myInfiniteScroll {
+  display: none;
 }
 .cta-btn-small {
     background-color: #3b5998;
@@ -137,6 +149,25 @@ font-size: 15px;
 font-weight: bold;
 }
 
+.sharing-btns-show-page {
+  list-style: none;
+  text-decoration: none;
+  margin-left: -39px;
+}
+.sharing-btns-show-page li{
+  display: inline;
+  margin-right: 5px;
+}
+.sharing-btns-show-page a{
+  border: 1px solid;
+  padding: 0.5em;
+  color: #fff;
+  text-decoration: none;
+}
+.sharing-btns-show-page a:hover{
+  color: #eee;
+  text-decoration: none;
+}
 .sharing-buttons{
   list-style: none;
   text-decoration: none;
@@ -508,33 +539,52 @@ padding: 20px*/
 #signup-email{
   float: left;
 }
-#sidebar .form-control {
+#sidebar input.form-control {
   border-radius: 0px;
+  width: 96%;
 }
 .signup-btn {
-  float: right;
+  float: left;
   font-weight: bold;
 }
-#sidebar .col-sm-8, .col-sm-4 {
-  padding: 0;
+#imageThumbnail {
+  margin-bottom: 15px;
+}
+#captionBlock {
+  padding: 10px;
+  border: 1px solid #e7e7e7;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+#buzzModal .modal-header {
+  background-color: #F6F7F8;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px
+}
+#buzzModal h4 {
+  color: #141823;
+  font-weight: bold;
 }
 
-#signup-desc {
-
-}
  .signup-btn .btn-block {
   border-radius: 0;
   background-color: #D24D57;
   line-height: 20px;
   color: #ffffff;
+  font-size: 12px;
+  margin-left: -10px;
+  padding-left: 10px;
+  width: 90px;
  }
- #sidebar .panel {
+ #sidebar .well {
     border-width: 1px solid #eeeeee;
     margin-bottom: 1.25rem;
     padding: 1.25rem;
     background: none repeat scroll 0% 0% #F2F2F2;
     color: #333;
     margin-top: 102px;
+    width: 320px;
+    padding-left: 26.5px;
   }
 
 .clearfix:before,
@@ -608,4 +658,14 @@ blockquote:before {
 }
 blockquote p {
   display: inline;
+}
+
+.ui.segment {
+  position: relative;
+  background-color: #ffffff;
+  box-shadow: none;
+  margin: 0px;
+  padding: 0px;
+  border-radius: 0px;
+  border: none;
 }
