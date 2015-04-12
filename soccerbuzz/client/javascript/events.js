@@ -79,7 +79,7 @@ Template.profile.events({
 });
 
 Template.profile.rendered = function () {
-  $('.menu .item').tab()
+  $('.menu .item').tab();
 };
  
 Template.streamTemplate.events({
@@ -402,15 +402,17 @@ Accounts.onLogout(function() {
 
 Template.buzzModal.events({
   "hidden.bs.modal #buzzModal": function(e,t) {
-    /*$("#insertBuzzForm").trigger('reset');
-    $("#imageThumbnail").find('img').attr("src", "");*/
-    // $(this).removeData('bs.modal');
-    $("#imageThumbnail").find('img').attr("src", "");
-    $("#imageThumbnail").hide();
-    $("#buzzModal").find('#insertBuzzForm')[0].reset();;
+  // $("#buzzModal").find('#insertBuzzForm')[0].reset();
+   $("#imageThumbnail img").attr("src", "");
+   $('.img-thumbnail').hide();
+   $("[data-action='remove-image']").hide();
+   $("#insertBuzzForm").trigger('reset');
+   $( "#progressbar" ).progressbar( "destroy" );
+   $('.submit-btn').removeAttr('disabled');
 
-  }
-})
+
+}
+});
 
 Template.home.events({
   "click [data-action='showImage']": function(e,t) {

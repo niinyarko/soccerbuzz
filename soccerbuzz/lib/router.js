@@ -57,7 +57,6 @@ Router.route(':_id/my_profile', function() {
     var _id = this.params._id;
     var userId = Meteor.userId();
     return {
-      // posts: Posts.find({owner:_id}, {sort: {createdAt: -1}}),
       posts: myPagination.find({owner: _id}, { itemsPerPage: 1, sort: {createdAt: -1} }),
       postsCount: Posts.find({owner: _id}).count(),
       postsUpvoted: myPagination.find({upvoters: userId}, { itemsPerPage: 1}),

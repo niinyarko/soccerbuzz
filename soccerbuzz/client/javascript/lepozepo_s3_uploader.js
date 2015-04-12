@@ -32,7 +32,9 @@ Template.s3Upload.events({
                             Session.set('fileExists', true);
                             Session.set('absoluteImageUrl', success.url);
                             Session.set('relativeImageUrl', success.relative_url);
+                            Session.set('percent_uploaded', success.percent_uploaded);
                         }
+                        init_progress_bar(Session.get('percent_uploaded'));
                 });
              }
              else {
@@ -53,15 +55,23 @@ Template.s3Upload.events({
                 console.log(error);
             }
             else {
-                Session.set('fileExists', false)
                 this.status = 'removed';
                 reset_form_element( $('.file_bag') );
+                $("#imageThumbnail img").attr("src", "");
+                   $('.img-thumbnail').hide();
+                   $("[data-action='remove-image']").hide();
+                 $( "#progressbar" ).progressbar( "destroy" );
             }
         });
        
     }
 })
 
+init_progress_bar = function(percent) {
+  $( "#progressbar" ).progressbar({
+       value: percent
+     });
+}
 Template.s3Upload.helpers({
     "files": function(){
         if (Session.get('fileExists')) {
@@ -84,3 +94,5 @@ reset_form_element = function(e) {
     e.wrap('<form>').parent('form').trigger('reset');
     e.unwrap();
 }
+
+  

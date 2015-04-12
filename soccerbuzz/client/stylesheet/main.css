@@ -1,11 +1,10 @@
 .cta-btn {
     width: 300px;
-    background-color: #3b5998;
+    background-color: #1BA39C;
     border: 0;
     color: #fff;
     line-height: 25px;
     margin: 0 auto;
-
 }
 
 section.my-soccabuzz {
@@ -24,8 +23,6 @@ h2.full-width {
   background: #6C7A89;
   color: white;
 }
-
-
 .ui.items > .item > .content > a.header  {
   text-decoration: none;
 }
@@ -62,7 +59,11 @@ h2.full-width {
 #no-posts-text p {
   font-size: 15px;
 }
-#imageThumbnail img {
+.ui-progressbar {
+  height: 1.5em;
+  margin-bottom: 10px;
+}
+.ui-widget-content {
   border: none;
 }
 .navbar-right {
@@ -104,7 +105,7 @@ margin-bottom: 10px;
   display: none;
 }
 .cta-btn-small {
-    background-color: #3b5998;
+    background-color: #1BA39C;
     border: 0;
     color: #fff;
     line-height: 25px;
@@ -478,6 +479,10 @@ margin-left: 10px;
 .ui.button.btn-upload-big {
   background-color: #1BA39C;
   color: #ffffff;
+}
+
+.ui-widget-header {
+  background: #1BA39C;
 }
 .btn-facebook {
     width: 150px;
