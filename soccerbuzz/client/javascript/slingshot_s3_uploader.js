@@ -41,6 +41,8 @@ Template.buzzModal.events({
     }
 });
 
+
+
 Template.progressBar.helpers({
 
     isUploading: function () {

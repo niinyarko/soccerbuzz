@@ -46,6 +46,49 @@ Router.configure({
   }
 });*/
 
+Router.route(':_id/my_profile', function() {
+  this.render('profile');
+},
+{ name: 'profile',
+  waitOn: function() {
+    return Meteor.subscribe('posts');
+  },
+  data: function() {
+    var _id = this.params._id;
+    var userId = Meteor.userId();
+    return {
+      // posts: Posts.find({owner:_id}, {sort: {createdAt: -1}}),
+      posts: myPagination.find({owner: _id}, { itemsPerPage: 1, sort: {createdAt: -1} }),
+      postsCount: Posts.find({owner: _id}).count(),
+      postsUpvoted: myPagination.find({upvoters: userId}, { itemsPerPage: 1}),
+      upvotesCount: Posts.find({upvoters: userId}).count()
+    }
+
+  }
+})
+
+
+/*
+Router.route('/edit_post/:_id', function() {
+  this.render('editPost');
+},
+{ name: 'editPost',
+  waitOn: function() {
+    return Meteor.subscribe('posts');
+  },
+  data: function() {
+    var _id = this.params._id;
+    return Posts.findOne(_id);
+  }
+})*/
+
+// Router.route('/edit_post/:_id', function () {
+//   var item = Posts.findOne({_id: this.params._id});
+//   this.render('editPost', {data: item});
+// }, {
+//   name: 'editPost'
+// })
+
 Router.route("/", function() {
     this.render("home");
 },

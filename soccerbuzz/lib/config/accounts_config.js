@@ -6,7 +6,7 @@ AccountsTemplates.configure({
     overrideLoginErrors: true,
     sendVerificationEmail: true,
     lowercaseUsername: false,
-    enforceEmailVerification: false,
+    enforceEmailVerification: true,
 
     // Appearance
     showAddRemoveServices: false,

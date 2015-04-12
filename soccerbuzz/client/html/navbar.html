@@ -18,6 +18,14 @@
       <ul class="nav navbar-nav navbar-right">
       {{#if currentUser}}
           <!-- <li><a href="{{pathFor "userProfile"}}">{{username}}</a></li> -->
+           <li class="dropdown">
+                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Me <span class="caret"></span></a>
+                     <ul class="dropdown-menu" role="menu">
+                       <li><a href="{{pathFor 'profile' _id=currentUser}}"><i class="user icon"></i>My Profile</a></li>
+                       <!-- <li><a href="#"><i class="setting icon"></i>Settings</a></li> -->
+                       <li><a href="#" data-action="signout-btn"><i class="sign out icon"></i>Logout</a></li>
+                     </ul>
+           </li>
            <li>
             <button class="btn btn-block btn-upload navbar-btn hidden-xs" data-action="new-buzz">
               Upload
@@ -25,13 +33,13 @@
             <a href="#" class="visible-xs btn-upload-small" data-action="new-buzz">Upload
             </a>
           </li>
-          <li>
+          <!-- <li>
           <button class="btn btn-block btn-signout navbar-btn hidden-xs" data-action="signout-btn">
           Sign out
           </button>
           <a href="#" class="visible-xs btn-signout-small" data-action="signout-btn">Sign out
             </a>
-          </li>
+          </li> -->
          {{else}}
           <li>
             <button class="btn btn-block navbar-btn btn-signin hidden-xs" data-action="signin-btn">

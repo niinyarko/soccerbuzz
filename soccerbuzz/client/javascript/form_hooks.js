@@ -2,13 +2,18 @@
   insertBuzzForm: {
      formToDoc: function(doc, ss, formId) {
         doc.score = 0;
+        doc.upvoters = ['first'];
+        doc.relativeImageUrl = Session.get('relativeImageUrl');
+        doc.absoluteImageUrl = Session.get('absoluteImageUrl');
         return doc;
     },
     onSubmit: function (insertDoc, updateDoc, currentDoc) {
     Posts.insert({
+      upvoters: insertDoc.upvoters,
       score: insertDoc.score,
       caption: insertDoc.caption,
-      imageUrl: Session.get("imageUrl")
+      relativeImageUrl: insertDoc.relativeImageUrl,
+      absoluteImageUrl: insertDoc.absoluteImageUrl
     }, function(err, id) {
        if (err) {
           this.done();
@@ -16,15 +21,39 @@
         else {
           $("#buzzModal").modal("hide");
           swal("Thanks! your image has been posted");
-          $("button.confirm").on("click", function(){
+         /* $("button.confirm").on("click", function(){
             location.reload();
-          })
+          })*/
         }
     })
        return false;  
     }
   }
 });
+
+AutoForm.hooks({
+  updatePostForm: {
+     formToDoc: function(doc, ss, formId) {
+        doc.upvoters = Session.get('upvoters');
+        doc.score = Session.get('score');
+        doc.relativeImageUrl = Session.get('relativeUrl');
+        doc.absoluteImageUrl = Session.get('absoluteUrl');
+        return doc;
+    },
+    onSubmit: function (insertDoc, updateDoc, currentDoc) {
+        Posts.update({_id: currentDoc._id}, updateDoc, function(err, id) {
+          if(err) {
+            this.done();
+          }
+          else {
+            swal("Post successfully updated");
+            $('#editPostModal').modal('hide');
+          }
+        });
+       return false; 
+    }
+  }
+})
 
 AutoForm.hooks({
   insertCommentForm: {

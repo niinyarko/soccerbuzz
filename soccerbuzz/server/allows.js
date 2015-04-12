@@ -3,7 +3,7 @@ Posts.allow({
         return (userId);
     },
     update: function (userId, doc, fields, modifier) {
-        return (userId && fields[0] === "score");
+        return (userId && fields[0] === "score" || fields[0] === "upvoters" || userId === doc.owner);
     },
     remove: function (userId, doc) {
         return (userId && (userId === doc.owner));

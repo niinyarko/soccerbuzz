@@ -1,3 +1,7 @@
+SimpleSchema.messages({
+  maxString: "[label] cannot exceed [max] characters"
+})
+
 Signups = new Mongo.Collection("signups");
 
 Signups.attachSchema(new SimpleSchema({
@@ -17,18 +21,28 @@ Posts.attachSchema(new SimpleSchema({
       omit: true
     }
   },
+  upvoters: {
+    type: [String],
+    autoform: {
+      omit: true
+    }
+  },
   caption: {
     type: String,
+    max: 140,
     label: "Add a caption"
   },
-    imageUrl: {
+  absoluteImageUrl: {
     type: String,
     label: "select file (Image should be at least 450x300)",
     autoform: {
-       afFieldInput: {
-        type: "file",
-        id: "image"
-      }
+      omit: true
+    }
+  },
+  relativeImageUrl: {
+    type: String,
+    autoform: {
+      omit: true
     }
   },
   owner: {

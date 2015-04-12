@@ -6,7 +6,6 @@
 
 meteor-platform
 iron:router
-aldeed:autoform
 aldeed:collection2
 edgee:slingshot
 reactive-var
@@ -34,3 +33,9 @@ manuelschoebel:ms-seo
 miro:preloader
 percolate:paginated-subscription
 tmeasday:publish-counts
+semantic:ui-tab
+semantic:ui-item
+aldeed:autoform
+lepozepo:s3
+jalik:paginate
+hitchcott:paginator

@@ -21,6 +21,12 @@ Template.registerHelper("commentString", function(id) {
         }
 })
 
+Template.editPost.helpers({
+  post: function () {
+    return Session.get('editPost');
+  }
+})
+
 Template.registerHelper("scoreString", function(score){
   if (score == 1) {
       return "point";
@@ -28,6 +34,34 @@ Template.registerHelper("scoreString", function(score){
   else {
       return "points";
   }
+})
+
+Template.registerHelper('postsCountString', function(count){
+  if (count == 1) {
+    return "Post"
+  }
+  else {
+    return "Posts"
+  }
+})
+
+Template.registerHelper('upvotesCountString', function(count){
+  if (count == 1) {
+    return "Upvote"
+  }
+  else {
+    return "Upvotes"
+  }
+})
+
+Template.registerHelper('noPosts', function(count) {
+  if (count == 0) {
+    return true;
+  }
+})
+
+Template.registerHelper('currentUser', function(){
+  return Meteor.userId();
 })
 
 Template.commentsTemplate.helpers({

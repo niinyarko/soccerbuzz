@@ -20,40 +20,8 @@
 </template>
 
 <template name="insertBuzzForm">
-    <!-- {{> quickForm collection="Buzz" id="insertBuzzForm" type="insert"}} -->
-    {{#autoForm collection="Posts" id="insertBuzzForm"}}
-    {{> progressBar}}
-    {{> afQuickField name="imageUrl" data-action="image-upload"}}
-    {{> myImage}}
-    <div id="captionBlock">
-    {{> afQuickField name="caption" rows=2 id="caption"}}
-        Characters remaining <span id="charCount"><input disabled size="3" value="140" name="txtLen" id="txtLen"></span>
-    </div>
-    <button type="submit" class="btn btn-primary">Create your buzz</button>
-    {{/autoForm}}
-</template>
-
-<template name="progressBar">
- <!--  <div class="progress">
-    <div class="progress-bar" role="progressbar" aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100" style="width: {{progress}}%;">
-      <span class="sr-only">{{progress}}% Complete</span>
-    </div>
-  </div> -->
-  <div class="progress">
-    <div class="progress-bar" role="progressbar" aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100" style="width: {{progress}}%">
-      {{progress}}%
-    </div>
-  </div>
+    {{> s3Upload}}
 </template>
 
 
 
-<template name="myImage">
-    <div id="imageThumbnail">
-          <img src="{{url}}"  width="100"  height="100"/>
-    </div>
-       <!--  {{#if url != "undefined"}}
-        <a href="#"><i class="fa fa-times"></i>Remove</a>
-        
-        {{/if}} -->
-</template>

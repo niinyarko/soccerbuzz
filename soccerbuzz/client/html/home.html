@@ -54,7 +54,7 @@
      </div>
      <div class="panel-body">
         <div id="buzz-details">  
-      <a href="{{pathFor "showBuzz" _id=_id slug=formatedCaption}}" id="showBuzz"> <img src="{{imageUrl}}" with="300" height="300" class="img-responsive"></a>
+      <a href="{{pathFor "showBuzz" _id=_id slug=formatedCaption}}" id="showBuzz"> <img src="{{absoluteImageUrl}}" with="300" height="300" class="img-responsive"></a>
   </div>
      </div>
       <div class="panel-footer">
@@ -185,7 +185,7 @@
                            <p id="buzz-para">{{post.caption}}</p>
                          </div>
                          <div class="panel-body">
-                           <img src="{{post.imageUrl}}" class="img-responsive" />
+                           <img src="{{post.absoluteImageUrl}}" class="img-responsive" />
                          </div>
                          <div class="panel-footer">
                            <div>

@@ -1,6 +1,6 @@
 Meteor.publish('posts', function(limit) {
   Meteor._sleepForMs(2000);
-  return Posts.find({}, {limit: limit});
+  return Posts.find({}, { sort: {createdAt: -1}, limit: limit});
 });
 
 Meteor.publish("buzzComments", Meteor.bindEnvironment(function() {

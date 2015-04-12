@@ -7,10 +7,67 @@
     margin: 0 auto;
 
 }
+
+section.my-soccabuzz {
+  box-sizing: border-box; /* or not */
+  margin: 0 auto;
+  width: 40rem;
+  padding-bottom: 1.5rem;
+  margin-top: -12px;
+}
+h2.full-width {
+  position: relative; /* child absolute */
+  margin: 0 -9999rem;
+  /* add back section padding value */
+  padding: 2rem 9999rem;
+  background: #666;
+  background: #6C7A89;
+  color: white;
+}
+
+
+.ui.items > .item > .content > a.header  {
+  text-decoration: none;
+}
+.ui.items > .item > .content > a.header:hover  {
+  color: rgba(0, 0, 0, 0.85);
+}
+
+#editPostModal .modal-header {
+  background-color: #F6F7F8;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus  {
+  background-color: inherit;
+}
 #my-loader {
   margin-top: 300px;
 }
 
+#image-select {
+  margin: 5px;
+}
+
+#image-select p {
+  font-weight: bold;
+}
+.ui.tabular.menu + .bottom.attached.segment, .ui.tabular.menu ~ .bottom.attached.segment + .bottom.attached.segment {
+  padding: 10px;
+}
+#no-posts-text {
+  float: right;
+  margin-right: 20%
+}
+#no-posts-text p {
+  font-size: 15px;
+}
+#imageThumbnail img {
+  border: none;
+}
+.navbar-right {
+  margin-right: 48px;
+}
 #fb-like-small {
 margin-top: 10px;
 margin-bottom: 10px;
@@ -121,7 +178,9 @@ margin:0 auto;
   text-align: center;
   padding-top: 1em;
 }
-
+#myfooter a{
+color: #eee;
+}
 hr { 
     display: block;
     margin-top: 0.5em;
@@ -403,16 +462,23 @@ margin-left: 10px;
   text-transform: capitalize;
 }
 
+.ui.cube.shape .side {
+  background-color: #1BA39C;
+  color: #ffffff;
+}
 .btn-upload {
-   background-color: #2ECC71;
+   background-color: #1BA39C;
 }
 .btn-upload-small:hover {
    color: #eeeeee;;
 }
 .btn-upload:hover {
-   color: #eeeeee;;
+   color: #eeeeee;
 }
-
+.ui.button.btn-upload-big {
+  background-color: #1BA39C;
+  color: #ffffff;
+}
 .btn-facebook {
     width: 150px;
     background-color: #3b5998;
@@ -429,7 +495,9 @@ margin-left: 10px;
     width: 50%;
     font-size: 10px;
 }
-
+.hide-me {
+  display: none;
+}
 #social-proof {
   margin-top: 100px;
 }
@@ -510,7 +578,19 @@ color: #eeeeee;
 .btn-twitter-small:hover  {
   color: #eeeeee;
 }
+.ui.tabular.menu .item {
+  font-size: 12px;
+}
 
+.ui.tab.segment {
+  background-color: #eeeeee;
+}
+.sweet-alert button {
+  font-size: 15px;
+}
+.sweet-alert {
+  width: 400px;
+}
 body,
 html {
 margin:0;
