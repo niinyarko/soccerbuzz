@@ -1,0 +1,34 @@
+<template name="s3Upload">
+            {{#each files}}
+                <div>
+                    {{#if uploadNotStarted}}
+                        <p>starting upload...</p>
+                    {{/if}}
+                </div>
+               <!--  <div class="progress">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="{{percent_uploaded}}" aria-valuemin="0" aria-valuemax="100" style="width: {{percent_uploaded}}%">
+                    {{percent_uploaded}}%
+                  </div>
+                </div> -->
+
+                <div id="progressbar"></div>
+                
+                <div id="imageThumbnail">
+                      <img src="{{url}}"  width="100"  height="100" class="img-thumbnail" alt="thumbnail" />
+                </div>
+                {{#if complete}}
+                    <a href="#" data-action="remove-image"><i class="fa fa-times"></i>Remove</a>
+                {{/if}}
+            {{/each}}
+            {{#autoForm collection="Posts" id="insertBuzzForm"}}
+              <div id="image-select">
+                  <p>Select Image. Image should be atleast (450x300)</p>
+                   <input type="file" class="file_bag">
+              </div>
+              <div id="captionBlock">
+              {{> afQuickField name="caption" rows=2 id="caption"}}
+                  Characters remaining <span id="charCount"><input disabled size="3" value="140" name="txtLen" id="txtLen"></span>
+              </div>
+              <button type="submit" class="btn btn-primary submit-btn">Create your buzz</button>
+            {{/autoForm}}
+</template>
