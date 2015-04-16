@@ -407,8 +407,10 @@ Template.buzzModal.events({
    $('.img-thumbnail').hide();
    $("[data-action='remove-image']").hide();
    $("#insertBuzzForm").trigger('reset');
-   $( "#progressbar" ).progressbar( "destroy" );
-   $('.submit-btn').removeAttr('disabled');
+   // $( "#progressbar" ).progressbar( "destroy" );
+   $(".progress").remove();
+   // $('.submit-btn').removeAttr('disabled');
+   $(".submit-btn").prop("disabled", false);
 
 
 }

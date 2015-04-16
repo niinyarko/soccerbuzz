@@ -34,7 +34,10 @@ Template.s3Upload.events({
                             Session.set('relativeImageUrl', success.relative_url);
                             Session.set('percent_uploaded', success.percent_uploaded);
                         }
-                        init_progress_bar(Session.get('percent_uploaded'));
+                        // init_progress_bar(Session.get('percent_uploaded'));
+                       /* $( "#progressbar" ).progressbar({
+                             value: Session.get('percent_uploaded')
+                           });*/
                 });
              }
              else {
@@ -60,18 +63,19 @@ Template.s3Upload.events({
                 $("#imageThumbnail img").attr("src", "");
                    $('.img-thumbnail').hide();
                    $("[data-action='remove-image']").hide();
-                 $( "#progressbar" ).progressbar( "destroy" );
+                 // $( "#progressbar" ).progressbar( "destroy" );
+                   $(".progress").remove();
             }
         });
        
     }
 })
 
-init_progress_bar = function(percent) {
+/*init_progress_bar = function(percent) {
   $( "#progressbar" ).progressbar({
        value: percent
      });
-}
+}*/
 Template.s3Upload.helpers({
     "files": function(){
         if (Session.get('fileExists')) {

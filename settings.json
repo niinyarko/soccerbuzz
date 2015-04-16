@@ -10,8 +10,8 @@
     }
   },
   "smtp": {
-    "username": "niinyarko1@gmail.com",
-    "password": "nii@nyarko200",
+    "username": "soccabuzz@gmail.com",
+    "password": "securebuzz23",
     "server": "smtp.gmail.com",
     "port": 465
   }
