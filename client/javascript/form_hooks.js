@@ -3,37 +3,30 @@
      formToDoc: function(doc, ss, formId) {
         doc.score = 0;
         doc.upvoters = ['first'];
+        doc.downvoters = ['first'];
         doc.relativeImageUrl = Session.get('relativeImageUrl');
         doc.absoluteImageUrl = Session.get('absoluteImageUrl');
         return doc;
     },
     onSubmit: function (insertDoc, updateDoc, currentDoc) {
-    Posts.insert({
-      upvoters: insertDoc.upvoters,
-      score: insertDoc.score,
-      caption: insertDoc.caption,
-      relativeImageUrl: insertDoc.relativeImageUrl,
-      absoluteImageUrl: insertDoc.absoluteImageUrl
-    }, function(err, id) {
-       if (err) {
+      Meteor.call('insertPost', insertDoc, function (error, result) {
+        if (error) {
           this.done();
         }
         else {
           $("#buzzModal").modal("hide");
           swal("Thanks! your image has been posted");
-         /* $("button.confirm").on("click", function(){
-            location.reload();
-          })*/
         }
-    })
+      });
        return false;  
-    }
   }
+}
 });
 
 AutoForm.hooks({
   updatePostForm: {
      formToDoc: function(doc, ss, formId) {
+        doc.downvoters = Session.get('downvoters');
         doc.upvoters = Session.get('upvoters');
         doc.score = Session.get('score');
         doc.relativeImageUrl = Session.get('relativeUrl');
@@ -41,8 +34,8 @@ AutoForm.hooks({
         return doc;
     },
     onSubmit: function (insertDoc, updateDoc, currentDoc) {
-        Posts.update({_id: currentDoc._id}, updateDoc, function(err, id) {
-          if(err) {
+        Meteor.call('updatePost', currentDoc._id, updateDoc, function (error, result) {
+          if (error) {
             this.done();
           }
           else {
@@ -80,7 +73,7 @@ AutoForm.addHooks(null, {
 AutoForm.hooks({
   insertEmailForm: {
     onSuccess: function(operation, result, template) {
-       swal("Thanks for signing up to the free newsletter from soccabuzz!!!");
+       swal("Thanks for signing up for the free newsletter from soccabuzz!!!");
     }
   }
 });

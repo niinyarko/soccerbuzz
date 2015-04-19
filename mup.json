@@ -26,14 +26,14 @@
   "appName": "soccabuzz",
 
   // Location of app (local directory)
-  "app": "/path/to/the/app",
+  "app": ".",
 
   // Configure environment
   "env": {
     "PORT": 80,
     "ROOT_URL": "http://soccabuzz.com",
     "METEOR_SETTINGS": "./settings.json",
-    "MONGO_URL": "mongodb://niinyarko:nii@nyarko200@ds061611.mongolab.com:61611/soccabuzz",
+    "MONGO_URL": "mongodb://niinyarko:soccabuzz23@ds061611.mongolab.com:61611/soccabuzz",
     "MAIL_URL": "smtp://soccabuzz%40gmail.com:securebuzz23@smtp.gmail.com:465/"
   },
 
