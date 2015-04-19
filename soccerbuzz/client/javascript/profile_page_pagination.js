@@ -1,0 +1,3 @@
+myPagination = new Paginator(Posts);
+
+

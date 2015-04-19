@@ -1,0 +1,48 @@
+<template name="loginModalPop">
+<div class="modal fade" id="popLogin">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;</button>
+                    <h2>Hey there!</h2>
+                     <p>Soccabuzz allows you to discover and share football related content like images and statistics on your facebook football groups and twitter.</p>
+                </div>
+                <div class="modal-body">
+                    <div class="overlay-social-actions">
+                        <button class="btn btn-block btn-social button-facebook" data-action="facebook-auth">
+                        <span>
+                            <i class="fa fa-facebook"></i> Sign in with Facebook
+                        </span>
+                        </button>
+                        <button class="btn btn-block btn-social button-twitter" data-action="twitter-auth">
+                        <span>
+                            <i class="fa fa-twitter"></i> Sign in with Twitter
+                        </span>
+                        </button>
+                        <button class="btn btn-block btn-social button-google btn-google" data-action="google-auth">
+                            <i class="fa fa-google-plus"></i> Sign in with Google
+                        </button>
+                        <div class="signinPrivacyMessages">
+                        We will never post to Twitter, Facebook, or Google Plus without your permission.
+                        </div>
+                    <p class="login-divider">OR</p>
+                          <div class="container">
+                            <div class="row">
+                                <div class="col-sm-4 col-sm-offset-1">
+                                    {{> atForm}}
+                                </div>
+                            </div>
+                         </div>
+                    
+                </div>
+                    
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</template>

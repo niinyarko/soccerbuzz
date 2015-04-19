@@ -1,0 +1,361 @@
+<template name="home">
+    <div class="container">
+        <div class="row">
+            <div id="wrapper" class="clearfix col-sm-12 col-xs-12">
+                <div id="main" class="col-xs-12 col-sm-offset-1 col-sm-6">
+                <div id="cta-upload">
+                  <h3>Got any funny soccer image to share?</h3>
+                  <button data-action="cta-upload-btn" class="btn btn-block cta-btn hidden-xs">Click here to upload your image</button>
+                  <button data-action="cta-upload-btn" class="btn btn-block cta-btn-small 
+                  visible-xs">
+                    Click here to upload your image
+                  </button>
+                  <div class="visible-xs" id="fb-like-small">
+                   <div class="fb-like-box" data-href="https://www.facebook.com/soccabuzz" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="false" data-show-border="false"></div>
+                  </div>
+                </div>
+
+                   {{> streamTemplate}}
+                </div>
+                <div id="sidebar" class="hidden-xs col-sm-4">
+                    <div class="row">
+                          <div class="well">
+                            <h4>Get your daily soccabuzz.</h4>
+                            {{#autoForm collection="Signups" id="insertEmailForm" type="insert"}}
+                            <fieldset>
+                            <div id="signup-email" class="">
+                            {{> afQuickField name='email' label=false placeholder="Enter your email"}}
+                           </div>
+                          <div class="signup-btn">
+                              <button type="submit" class="btn btn-block">
+                                SUBSCRIBE
+                              </button>
+                          </div>
+                          </fieldset>
+                       {{/autoForm}}
+                      </div>
+                      <div class="fb-like-box" data-href="https://www.facebook.com/soccabuzz" data-colorscheme="light" data-show-faces="true" data-header="true" data-stream="false" data-show-border="true"></div>
+                      </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    {{> buzzModal}}
+    {{> loginModalPop}}
+</template>
+
+<template name="streamTemplate">
+  {{#each posts}}
+  <div class="panel panel-default">
+     <div class="panel-heading">
+        <a href="{{pathFor "showBuzz" _id=_id slug=formatedCaption}}">
+          <p id="buzz-para">{{caption}}</p>
+        </a>
+     </div>
+     <div class="panel-body">
+        <div id="buzz-details">  
+      <a href="{{pathFor "showBuzz" _id=_id slug=formatedCaption}}" id="showBuzz"> <img src="{{absoluteImageUrl}}" with="300" height="300" class="img-responsive"></a>
+  </div>
+     </div>
+      <div class="panel-footer">
+            <div id="buzz-social">
+           <p class="para-inline"><i class="fa fa-clock-o"></i>
+            {{ tm_now createdAt}}
+           </p>
+            <div class="comment-div hidden-xs">
+            <p><a href="{{urlFor 'showBuzz' _id=_id slug=formatedCaption}}">        <!-- {{commentsCount _id}} {{commentString _id}} -->
+            <!-- <div id="comments-box-hide">{{> commentsBox id=_id}}</div> -->
+            <fb:comments-count href={{urlFor 'showBuzz' _id=_id slug=formatedCaption}}></fb:comments-count> comments 
+            </a>
+            </p>
+             <a href="{{urlFor 'showBuzz' _id=_id slug=formatedCaption}}" class="btn btn-default btn-sm" title="comment">
+               <span class="icon-comment"></span>
+             </a>
+            </div>
+            <div class="visible-xs comment-vote-small" >
+            <table>
+              <thead>
+                <tr>
+                  <th>
+                     <p>
+                       <a href="{{urlFor 'showBuzz' _id=_id slug=formatedCaption}}">      <!--   {{commentsCount _id}} {{commentString _id}} -->
+                       <!-- <div id="comments-box-hide">{{> commentsBox id=_id}}</div> -->
+                       <fb:comments-count href={{urlFor 'showBuzz' _id=_id slug=formatedCaption}}></fb:comments-count> comments 
+                       </a>
+                     </p>
+                  </th>
+                  <th>
+                     <p class="">{{score}} {{scoreString score}}</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                       <a href="{{urlFor 'showBuzz' _id=_id slug=formatedCaption}}" class="btn btn-default btn-sm btn-check" title="comment">
+                         <span class="icon-comment"></span>
+                       </a>
+                  </td>
+                  <td>
+                       <a href="#" class="btn btn-default btn-sm" data-action="increment">
+                         <span class="icon-arrow-up"></span>
+                       </a>
+                       <a href="#" class="btn btn-default btn-sm" data-action="decrement">
+                         <span class="icon-arrow-down"></span>
+                       </a>
+                 </td>
+                </tr>
+              </tbody>
+            </table>  
+            </div>
+           <div class="vote-buttons hidden-xs">
+               <p>{{score}} {{scoreString score}}</p>
+              <a href="#" class="btn btn-default btn-sm" data-action="increment">
+               <span class="icon-arrow-up"></span>
+              </a>
+              <a href="#" class="btn btn-default btn-sm" data-action="decrement">
+               <span class="icon-arrow-down"></span>
+             </a>
+           </div>
+           <ul class="sharing-buttons-main hidden-xs">
+             <li>
+                  <a href="http://www.facebook.com/sharer.php?u={{urlFor 'showBuzz' _id=_id slug=formatedCaption}}" target="_blank" class="btn btn-block btn-social btn-facebook">
+                   <span>
+                 <i class="fa fa-facebook"></i>Share
+                 </span>
+                 </a>
+              <!--    <a href="#" class="btn btn-block btn-social btn-facebook" data-action="facebook-share" data-url="{{urlFor 'showBuzz' _id=_id slug=formatedCaption}}" id="_id">
+                   <span>
+                     <i class="fa fa-facebook"></i>Share
+                   </span>
+                 </a> -->
+             </li>
+             <li>
+              <a href="http://twitter.com/share?url={{urlFor 'showBuzz' _id=_id slug=formatedCaption}}&text={{caption}}" target="_blank" class="btn btn-block btn-social btn-twitter">
+                   <span>
+                 <i class="fa fa-twitter"></i>Tweet
+                 </span>
+               </a>
+             </li>
+           </ul>
+           <ul class="sharing-buttons-small visible-xs">
+             <li>
+                  <a href="http://www.facebook.com/sharer.php?u={{urlFor 'showBuzz' _id=_id slug=formatedCaption}}" target="_blank" class="btn btn-block btn-social btn-facebook-small">
+                   <span>
+                 <i class="fa fa-facebook"></i>Share
+                 </span>
+                 </a>
+             </li>
+             <li>
+              <a href="http://twitter.com/share?url={{urlFor 'showBuzz' _id=_id slug=formatedCaption}}&text={{caption}}" target="_blank" class="btn btn-block btn-social btn-twitter-small">
+                   <span>
+                 <i class="fa fa-twitter"></i>Tweet
+                 </span>
+               </a>
+             </li>
+           </ul>
+      </div>
+      </div>
+   </div>
+  {{/each}}
+      {{#if isReady}}
+          {{#if hasMorePosts}}
+            <div id="load-div">
+                <div class="panel panel-default">
+                  <div class="panel-body">
+                    <h3 class="text-center" data-action="load-btn">Load More...</h3>
+                  </div>
+                </div>
+            </div>
+          {{/if}}
+        {{else}}
+          <center>{{> infiniteScrollLoader}}</center>
+        {{/if}}
+</template>
+
+
+<template name="showBuzzTemplate">
+   <div class="container">
+          <div class="row">
+            <div class="col-sm-12" id="show-buzz-wrap">
+                  <div class="row">
+                      <div class="col-sm-8 col-sm-offset-2 col-xs-12">
+                       <div class="panel panel-default">
+                         <div class="panel-heading">
+                           <p id="buzz-para">{{post.caption}}</p>
+                         </div>
+                         <div class="panel-body">
+                           <img src="{{post.absoluteImageUrl}}" class="img-responsive" />
+                         </div>
+                         <div class="panel-footer">
+                           <div>
+                               <!-- <p class="para-inline">posted by: {{username _id}}</p> -->
+                                <p class="para-inline">
+                                  <a href="{{urlFor 'showBuzz' _id=post._id slug=formatedCaption}}">
+                                 <i class="glyphicon glyphicon-comment"></i>
+                                 <!-- {{commentsCount _id}} {{commentString _id}} -->
+                                 <fb:comments-count href={{urlFor 'showBuzz' _id=post._id slug=formatedCaption}}></fb:comments-count> comments 
+                                 </a>
+                                </p>
+                                 <p class="para-inline"><i class="fa fa-clock-o"></i>
+                                 {{ tm_now buzz.createdAt}}
+                                 </p>
+                           </div>
+                           <ul class="sharing-btns-show-page hidden-xs">
+                             <li>
+                                  <a href="http://www.facebook.com/sharer.php?u={{urlFor 'showBuzz' _id=post._id slug=formatedCaption}}" target="_blank" class="btn btn-block btn-social btn-facebook">
+                                   <span>
+                                 <i class="fa fa-facebook"></i>Share
+                                 </span>
+                                 </a>
+                             </li>
+                             <li>
+                              <a href="http://twitter.com/share?url={{urlFor 'showBuzz' _id=post._id slug=formatedCaption}}&text={{caption}}" target="_blank" class="btn btn-block btn-social btn-twitter">
+                                   <span>
+                                 <i class="fa fa-twitter"></i>Tweet
+                                 </span>
+                               </a>
+                             </li>
+                           </ul>
+                           <ul class="sharing-buttons-small visible-xs">
+                             <li>
+                                  <a href="http://www.facebook.com/sharer.php?u={{urlFor 'showBuzz' _id=post._id slug=formatedCaption}}" target="_blank" class="btn btn-block btn-social btn-facebook-small">
+                                   <span>
+                                 <i class="fa fa-facebook"></i>Share
+                                 </span>
+                                 </a>
+                             </li>
+                             <li>
+                              <a href="http://twitter.com/share?url={{urlFor 'showBuzz' _id=post._id slug=formatedCaption}}&text={{caption}}" target="_blank" class="btn btn-block btn-social btn-twitter-small">
+                                   <span>
+                                 <i class="fa fa-twitter"></i>Tweet
+                                 </span>
+                               </a>
+                             </li>
+                           </ul>
+                         </div>
+                       </div>
+                          {{> facebookCommentsTemplate}}
+                      </div>
+                  </div>
+            </div>
+           </div>
+    </div>
+</template>
+
+<template name="facebookCommentsTemplate">
+  <div id="comments-box">
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="fb-comments" data-href={{urlFor 'showBuzz' _id=post._id slug=formatedCaption}} data-numposts="5" data-colorscheme="light"></div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="commentsBox">
+  <section id="comments-box">
+        <div class="row">
+          <div class="col-sm-8">
+           {{#autoForm collection="Comments" id="insertCommentForm" type="insert"}}
+            <fieldset>
+              {{> afQuickField name='comment' label=false rows=4 placeholder="Join the discussion" }}
+            </fieldset>
+              <div class="submit-div" data-action="add-comment" id="{{post._id}}">
+                <button type="submit" class="btn btn-primary">
+                          Add Comment
+                </button>
+              </div>
+          {{/autoForm}}
+          </div>
+        </div>
+  </section>
+  {{> commentsTemplate}}
+</template>
+
+<template name="commentsTemplate">
+  <div id="comments-list">
+       <!-- <p id="commenter-para"><a href="#">{{username owner}}</a></p> -->
+    {{#each comments}}
+      <ul class="media-list">
+        <li class="media">
+          <div class="media-left">
+              <!-- <img class="media-object" src="{{imageUrl}}" alt="..."  height="50" width="50"> -->
+          {{> avatar user=this}}
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading"> <span id="username">{{username}}</span> <small>{{ tm_now createdAt}}</small></h4>
+            <div class="content">
+                <p data-id="{{post._id}}" class="comment-content">{{comment}}</p>
+
+                <div class="actions btn-group btn-group-xs">
+                    <div aria-label="Left Align" class="btn btn-default">
+                        <small>{{likes}}</small>
+                        <span aria-hidden="true" class="glyphicon glyphicon-thumbs-up thumbs-up-action-comment" id="{{_id}}"></span>
+                    </div>
+                    <div aria-label="Left Align" class="btn btn-default">
+                        <small>{{dislikes}}</small>
+                        <span aria-hidden="true" class="glyphicon glyphicon-thumbs-down thumbs-down-action-comment" id="{{_id}}"></span>
+                    </div>
+                    <div aria-label="Left Align" class="btn btn-default reply-action" id="{{post._id}}">
+                        Reply
+                    </div>
+
+                    
+                </div>
+                 {{> repliesBox}}
+            </div>
+          </div>
+        </li>
+      </ul>
+      {{/each}}
+  </div>
+</template>
+<template name="repliesBox">
+  <section class="replies-box-hide">
+        <div class="row replies-box" id="{{_id}}">
+          <div class="col-sm-8">
+           {{#autoForm collection="Replies" id="insertReplyForm" type="insert"}}
+              {{> afQuickField name='reply' label=false rows=4 placeholder="Join the discussion" }}
+              <div class="submit-div" data-action="add-reply" id="{{post._id}}">
+                <button type="submit" class="btn btn-primary btn-sm">
+                          Add Reply
+                </button>
+              </div>
+          {{/autoForm}}
+          </div>
+        </div>
+  </section>
+  {{> repliesTemplate}}
+</template>
+
+<template name="repliesTemplate">
+{{#each replies}}
+  <div class="media">
+    <div class="media-left media-middle">
+      <!-- <a href="#">
+        <img class="media-object" src="..." alt="...">
+      </a> -->
+        {{> avatar user=this}}
+    </div>
+    <div class="media-body">
+       <h4 class="media-heading"> <span id="username">{{username}}</span> <small>
+       {{ tm_now createdAt}}</small></h4>
+       <div class="content">
+           <p data-id="{{post._id}}" class="comment-content">{{reply}}</p>
+
+           <div class="actions btn-group btn-group-xs">
+               <div aria-label="Left Align" class="btn btn-default">
+                   <small>{{likes}}</small>
+                   <span aria-hidden="true" class="glyphicon glyphicon-thumbs-up thumbs-up-reply" id="{{post._id}}"></span>
+               </div>
+               <div aria-label="Left Align" class="btn btn-default">
+                   <small>{{dislikes}}</small>
+                   <span aria-hidden="true" class="glyphicon glyphicon-thumbs-down thumbs-down-reply" id="{{post._id}}"></span>
+               </div>               
+           </div>
+       </div>
+    </div>
+  </div>
+  {{/each}}
+</template>

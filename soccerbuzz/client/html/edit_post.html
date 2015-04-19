@@ -1,0 +1,26 @@
+<template name="editPost">
+   <div class="modal fade" id="editPostModal">
+           <div class="modal-dialog">
+               <div class="modal-content">
+                   <div class="modal-header">
+                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                       &times;</button>
+                       <h4 class="modal-title">Edit Post</h4>
+                   </div>
+                   <div class="modal-body">
+                      {{#autoForm collection="Posts" id="updatePostForm" doc=post}}
+                        <div id="captionBlock">
+                        {{> afQuickField name="caption" rows=2 id="caption" label="Edit caption"}}
+                            Maximum Characters <span id="charCount"><input disabled size="3" value="140" name="txtLen" id="txtLen"></span>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Update</button>
+                      {{/autoForm}}
+                       
+                   </div>
+                   <div class="modal-footer">
+                       <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                   </div>
+               </div>
+           </div>
+       </div>
+</template>
