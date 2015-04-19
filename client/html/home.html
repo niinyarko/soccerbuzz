@@ -1,6 +1,28 @@
 <template name="home">
     <div class="container">
         <div class="row">
+            <div class="col-sm-12">
+              <section class="home-wide-bar">
+                <div class="full-width">
+                  <div class="row">
+                    <div id="social-btns" class="col-sm-10">
+                      <div id="soccabuzz-slogan" class="col-sm-6 hidden-xs">
+                        <p>Soccabuzz helps you discover and share soccer related content.</p>
+                      </div>
+                      <div class="col-sm-4" id="socca-btns">
+                        <div class="fb-like" data-href="https://www.facebook.com/soccabuzz" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+                        <a class="twitter-follow-button"
+                          href="https://twitter.com/soccabuzz"
+                          data-show-count="false"
+                          data-lang="en">
+                        Follow @soccabuzz
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
             <div id="wrapper" class="clearfix col-sm-12 col-xs-12">
                 <div id="main" class="col-xs-12 col-sm-offset-1 col-sm-6">
                 <div id="cta-upload">
@@ -11,9 +33,9 @@
                   visible-xs">
                     Click here to create a Buzz
                   </button>
-                  <div class="visible-xs" id="fb-like-small">
+                  <!-- <div class="visible-xs" id="fb-like-small">
                    <div class="fb-like-box" data-href="https://www.facebook.com/soccabuzz" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="false" data-show-border="false"></div>
-                  </div>
+                  </div> -->
                 </div>
 
                    {{> streamTemplate}}
@@ -35,7 +57,7 @@
                           </fieldset>
                        {{/autoForm}}
                       </div>
-                      <div class="fb-like-box" data-href="https://www.facebook.com/soccabuzz" data-colorscheme="light" data-show-faces="true" data-header="true" data-stream="false" data-show-border="true"></div>
+                     <!--  <div class="fb-like-box" data-href="https://www.facebook.com/soccabuzz" data-colorscheme="light" data-show-faces="true" data-header="true" data-stream="false" data-show-border="true"></div> -->
                       </div>
                   </div>
                 </div>
