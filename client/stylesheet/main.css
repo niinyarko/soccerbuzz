@@ -28,41 +28,41 @@
   margin-left: 5px;
 }
 section.home-wide-bar {
-  box-sizing: border-box; /* or not */
-  /*margin: 0 auto;*/
-  /*width: 40rem;*/
+  /*box-sizing: border-box;*/
   padding-bottom: 1.5rem;
   margin-top: -12px;
+  width: 100%;
 }
 div.full-width p {
   color: #999;
 }
 div.full-width {
-  position: relative; /* child absolute */
-  margin: 0 -9999rem;
-  /* add back section padding value */
-  padding: 1.5rem 9999rem;
-  background: #666;
+  position: relative;
+  padding: 1.5rem;
   background: #ffffff;
-  color: white;
   border-bottom: 1px solid #e7e7e7;
 }
+
 section.my-soccabuzz {
-  box-sizing: border-box; /* or not */
-  margin: 0 auto;
-  width: 40rem;
+  /*box-sizing: border-box; */
   padding-bottom: 1.5rem;
   margin-top: -12px;
+  width: 100%;
 }
 h2.full-width {
-  position: relative; /* child absolute */
-  margin: 0 -9999rem;
-  /* add back section padding value */
-  padding: 2rem 9999rem;
-  background: #666;
+  position: relative;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  padding-left: 22rem;
   background: #6C7A89;
   color: white;
+  text-align: c;
 }
+.socca {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+  
 .ui.items > .item > .content > a.header  {
   text-decoration: none;
 }
@@ -500,7 +500,6 @@ margin-left: 10px;
 .btn-upload-small {
    text-align: center;
   font-size: 20px;
-  text-transform: capitalize;
 }
 
 .ui.cube.shape .side {
