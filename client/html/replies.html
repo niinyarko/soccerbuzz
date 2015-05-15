@@ -1,0 +1,48 @@
+<template name="repliesBox">
+  <section class="replies-box-hide">
+        <div class="row replies-box" id="{{_id}}">
+          <div class="col-sm-8">
+           {{#autoForm collection="Replies" id="insertReplyForm" type="insert"}}
+              {{> afQuickField name='reply' label=false rows=4 placeholder="Join the discussion" }}
+              <div class="submit-div" data-action="add-reply" id="{{post._id}}">
+                <button type="submit" class="btn btn-primary btn-sm">
+                          Add Reply
+                </button>
+              </div>
+          {{/autoForm}}
+          </div>
+        </div>
+  </section>
+  {{> repliesTemplate}}
+</template>
+
+<template name="repliesTemplate">
+{{#each replies}}
+  <div class="media">
+    <div class="media-left media-middle">
+      <!-- <a href="#">
+        <img class="media-object" src="..." alt="...">
+      </a> -->
+        {{> avatar user=this}}
+    </div>
+    <div class="media-body">
+       <h4 class="media-heading"> <span id="username">{{username}}</span> <small>
+       {{ tm_now createdAt}}</small></h4>
+       <div class="content">
+           <p data-id="{{post._id}}" class="comment-content">{{reply}}</p>
+
+           <div class="actions btn-group btn-group-xs">
+               <div aria-label="Left Align" class="btn btn-default">
+                   <small>{{likes}}</small>
+                   <span aria-hidden="true" class="glyphicon glyphicon-thumbs-up thumbs-up-reply" id="{{post._id}}"></span>
+               </div>
+               <div aria-label="Left Align" class="btn btn-default">
+                   <small>{{dislikes}}</small>
+                   <span aria-hidden="true" class="glyphicon glyphicon-thumbs-down thumbs-down-reply" id="{{post._id}}"></span>
+               </div>               
+           </div>
+       </div>
+    </div>
+  </div>
+  {{/each}}
+</template>

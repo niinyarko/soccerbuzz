@@ -1,7 +1,7 @@
 <template name="navbar">
 
-  <nav class="navbar navbar-default navbar-fixed-top">
-  
+  <nav class="navbar navbar-default fixed">
+
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -15,11 +15,11 @@
     </div>
     <div class="collapse navbar-collapse" id="top-nav">
       <ul class="nav navbar-nav">
+        <li><a href="{{pathFor "soccerHighlights"}}" class="first-label"><span class="label label-primary my-labels">Watch Soccer Highlights</span></a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
       {{#if currentUser}}
-          <!-- <li><a href="{{pathFor "userProfile"}}">{{username}}</a></li> -->
-           <li><img src="{{currentUser.profile.picture}}" alt="{{currentUser.profile.name}}"></li>
+          <li><img src="{{userPic}}" alt="{{profileName}}" class="user-pic-small" width="{{imgWidth}}" height="30"></li>
            <li class="dropdown">
                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Me <span class="caret"></span></a>
                      <ul class="dropdown-menu" role="menu">
@@ -35,13 +35,7 @@
             <a href="#" class="visible-xs btn-upload-small" data-action="new-buzz">Create a Buzz
             </a>
           </li>
-          <!-- <li>
-          <button class="btn btn-block btn-signout navbar-btn hidden-xs" data-action="signout-btn">
-          Sign out
-          </button>
-          <a href="#" class="visible-xs btn-signout-small" data-action="signout-btn">Sign out
-            </a>
-          </li> -->
+       
          {{else}}
           <li>
             <button class="btn btn-block navbar-btn btn-signin hidden-xs" data-action="signin-btn">
@@ -78,7 +72,7 @@
                     &times;</button>
                     <div class="text-center">
                       <h1>Sign In</h1>
-                     <h4>Discover and share football related content like images and statistics on your facebook football groups and twitter.</h4>
+                     <h4>Soccabuzz helps you create, discover and share soccer related content like images and soccer highlights</h4>
                     </div>
                 </div>
                 <div class="modal-body">

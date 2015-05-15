@@ -1,4 +1,4 @@
-Template.repliesTemplate.events({
+/*Template.repliesTemplate.events({
   'click .thumbs-up-reply': function (e) {
     var _id = e.currentTarget.id;
       var userId = Meteor.userId();
@@ -81,4 +81,4 @@ checkIfVotedDec = function(userId, postId) {
             return true;
     }
     }
-};
+};*/

@@ -1,4 +1,4 @@
-Template.commentsTemplate.events({
+/*Template.commentsTemplate.events({
   'click .reply-action': function (e) {
     var commentId = e.currentTarget.id;
     Session.set("commentId", commentId);
@@ -90,4 +90,4 @@ checkIfVotedDec = function(userId, postId) {
             return true;
     }
     }
-};
+};*/

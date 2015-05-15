@@ -37,14 +37,18 @@
                           </div>
                         </div>
                     </div>
-                    <!-- {{#if noPosts postsCount}}
-                      <div id="no-posts-text">
-                          <p>You don't have any posts yet. </p>
-                          <p>Be part of the fun.</p>
-                          <p><span><a href="#" class="ui huge button btn-upload-big">Upload an image now
-                          </a></span></p>
+                    {{#if noPosts postsCount}}
+                      <div class="ui ignored info message">
+                        <p>You don't have any posts yet. </p>
+                        <p>Be part of the fun.</p>
+                        <p>
+                            <span>
+                                  <a href="#" class="ui huge button btn-upload-big">CREAT A BUZZ NOW
+                                  </a>
+                            </span>
+                        </p>
                       </div>
-                    {{/if}} -->
+                    {{/if}}
                 </div>
                 <div class="ui bottom attached tab segment" data-tab="second">
                   {{#each posts}}
@@ -70,6 +74,18 @@
                     </div>
                   {{/each}}
                   {{> Paginator_UI posts}}
+                  {{#if noPosts postsCount}}
+                    <div class="ui ignored info message">
+                      <p>You don't have any posts yet. </p>
+                      <p>Be part of the fun.</p>
+                      <p>
+                          <span>
+                                <a href="#" class="ui huge button btn-upload-big">CREAT A BUZZ NOW
+                                </a>
+                          </span>
+                      </p>
+                    </div>
+                  {{/if}}
                 </div>
                 <div class="ui bottom attached tab segment" data-tab="third">
                     {{#each postsUpvoted}}
@@ -94,6 +110,11 @@
                       </div>
                     {{/each}}
                     {{> Paginator_UI postsUpvoted}}
+                    {{#if noUpvotes upvotesCount}}
+                      <div class="ui ignored info message">
+                        <p>You have not upvoted any post yet</p>
+                      </div>
+                    {{/if}}
                 </div>
             </div>
         </div>

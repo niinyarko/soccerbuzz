@@ -1,4 +1,4 @@
-Meteor.publish('posts', function(limit) {
+/*Meteor.publish('posts', function(limit) {
   Meteor._sleepForMs(2000);
   return Posts.find({}, { sort: {createdAt: -1}, limit: limit});
 });
@@ -20,3 +20,9 @@ Meteor.publish("users", Meteor.bindEnvironment(function() {
 }, function(e){
     throw(e);
 }));
+
+Meteor.publish('videos', function(limit) {
+  Meteor._sleepForMs(2000);
+  return Videos.find({}, {sort: {createdAt: -1},limit: limit});
+});
+*/

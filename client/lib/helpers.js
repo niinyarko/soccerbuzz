@@ -27,6 +27,28 @@ Template.editPost.helpers({
   }
 })
 
+Template.registerHelper('profileName', function() {
+  var user = Meteor.user();
+  var name = user.profile.username;
+  return name;
+})
+
+Template.registerHelper('userPic', function(){
+    var user = Meteor.user();
+    var picture = user.profile.picture;
+    return picture;
+})
+Template.registerHelper('imgWidth', function() {
+    var user = Meteor.user();
+    var picture = user.profile.picture;
+    if (typeof(picture) == "undefined") {
+      return 0;
+    }
+    else {
+      return 30;
+    }
+})
+
 Template.registerHelper("scoreString", function(score){
   if (score == 1) {
       return "point";
@@ -58,6 +80,12 @@ Template.registerHelper('noPosts', function(count) {
   if (count == 0) {
     return true;
   }
+})
+
+Template.registerHelper('noUpvotes', function(votesCount) {
+    if (votesCount == 0) {
+      return true;
+    }
 })
 
 Template.registerHelper('currentUser', function(){

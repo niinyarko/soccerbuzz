@@ -1,0 +1,90 @@
+<template name="showBuzzTemplate">
+   <div class="container">
+          <div class="row">
+            <div class="col-sm-12" id="show-buzz-wrap">
+                  <div class="row">
+                      <div class="col-sm-8 col-sm-offset-2 col-xs-12">
+                       <div class="panel panel-default">
+                                 <div class="panel-heading">
+                                   <p id="buzz-para">{{post.caption}}</p>
+                                 </div>
+                                 <div class="panel-image hide-panel-body">
+                                    <img src="{{post.absoluteImageUrl}}" class="img-responsive" />
+                                 </div>
+                                 <div class="panel-body">
+                                 </div>
+                                 <div class="panel-footer text-center">
+                                  <div class="action-buttons hidden-xs">
+                                    <p class="para-inline">{{post.score}} {{scoreString post.score}}</p>
+                                     <a href="#" class="btn btn-default btn-sm" data-action="upvote">
+                                      <span class="icon-arrow-up"></span>
+                                     </a>
+                                     <a href="#" class="btn btn-default btn-sm" data-action="downvote">
+                                      <span class="icon-arrow-down"></span>
+                                    </a>
+                                    <p class="para-inline">
+                                      <a href="{{urlFor 'showBuzz' _id=post._id slug=formatedCaption}}">
+                                     <i class="glyphicon glyphicon-comment"></i>
+                                     <fb:comments-count href={{urlFor 'showBuzz' _id=post._id slug=formatedCaption}}></fb:comments-count> comments 
+                                     </a>
+                                    </p>
+                                     <p class="para-inline"><i class="fa fa-clock-o"></i>
+                                     {{ tm_now buzz.createdAt}}
+                                     </p>
+                                    <a href="http://www.facebook.com/sharer.php?u={{urlFor 'showBuzz' _id=post._id slug=formatedCaption}}" target="_blank" class="icon-facebook"><span class=""></span></a>
+                                    <a href="http://twitter.com/share?url={{urlFor 'showBuzz' _id=post._id slug=formatedCaption}}&text={{caption}}" target="_blank" class="icon-twitter"><span class=""></span></a>
+                                    
+                                  </div>
+                                  <div class="visible-xs comment-vote-small" >
+                                  <table>
+                                    <thead>
+                                      <tr>
+                                        <th>
+                                           <p>
+                                             <a href="{{urlFor 'showBuzz' _id=post._id slug=formatedCaption}}"> 
+                                             <fb:comments-count href={{urlFor 'showBuzz' _id=_id slug=formatedCaption}}></fb:comments-count> comments 
+                                             </a>
+                                           </p>
+                                        </th>
+                                        <th>
+                                           <p class="">{{post.score}} {{scoreString post.score}}</p>
+                                        </th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>
+                                             <a href="{{urlFor 'showBuzz' _id=post._id slug=formatedCaption}}" class="btn btn-default btn-sm btn-check" title="comment">
+                                               <span class="icon-comment"></span>
+                                             </a>
+                                        </td>
+                                        <td>
+                                             <a href="#" class="btn btn-default btn-sm" data-action="upvote">
+                                               <span class="icon-arrow-up"></span>
+                                             </a>
+                                             <a href="#" class="btn btn-default btn-sm" data-action="downvote">
+                                               <span class="icon-arrow-down"></span>
+                                             </a>
+                                       </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>  
+                                       <p class="para-inline"><i class="fa fa-clock-o"></i>
+                                       {{ tm_now buzz.createdAt}}
+                                       </p>
+                                      <a href="http://www.facebook.com/sharer.php?u={{urlFor 'showBuzz' _id=post._id slug=formatedCaption}}" target="_blank" class="icon-facebook"><span class=""></span></a>
+                                      <a href="http://twitter.com/share?url={{urlFor 'showBuzz' _id=post._id slug=formatedCaption}}&text={{caption}}" target="_blank" class="icon-twitter"><span class=""></span></a>
+                                  </div>
+                                      
+                                 </div>
+                        </div>
+                          <div id="comments-box">
+                                <div class="fb-comments" data-href={{urlFor 'showBuzz' _id=post._id slug=formatedCaption}} data-numposts="5" data-colorscheme="light"></div>
+                          </div>
+                      </div>
+                  </div>
+            </div>
+           </div>
+    </div>
+    {{> loginModalPop}}
+</template>

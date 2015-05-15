@@ -1,3 +1,70 @@
+.panel-image img.panel-image-preview {
+    width: 100%;
+  border-radius: 4px 4px 0px 0px;
+}
+
+.panel-heading ~ .panel-image img.panel-image-preview {
+  border-radius: 0px;
+}
+
+.panel-image ~ .panel-body, .panel-image.hide-panel-body ~ .panel-body {
+  overflow: hidden;
+}
+.panel-image ~ .panel-footer a {
+  padding: 0px 10px;
+  /*color: rgb(100, 100, 100);*/
+  color: #999;
+}
+
+.panel-image.hide-panel-body ~ .panel-body {
+  height: 0px;
+  padding: 0px;
+}
+
+div[itemprop="caption"] {
+   color: red;
+}
+ .home-panel a {
+  color: #999;
+ }
+
+.icon-facebook:before {
+  font-family: FontAwesome;
+  content: "\f230";
+  font-size: 1.5em;
+  display: inline-block;
+  text-decoration: none;
+}
+.icon-twitter:before {
+  font-family: FontAwesome;
+  content: "\f099";
+  font-size: 1.5em;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.facebook-icon:before {
+   font-family: FontAwesome;
+   content: "\f09a";
+   font-size: 1.3em;
+   display: inline-block;
+   text-decoration: none;
+   margin-right: 4px;
+   margin-left: 4px;
+}
+
+
+.twitter-icon:before {
+   font-family: FontAwesome;
+   content: "\f099";
+   font-size: 1.3em;
+   display: inline-block;
+   text-decoration: none;
+}
+
+
+
+
 .cta-btn {
     width: 300px;
     background-color: #1BA39C;
@@ -6,10 +73,43 @@
     line-height: 25px;
     margin: 0 auto;
 }
+.user-pic-small {
+ margin-top: 9px;
+ border-radius: 3px;
+ border: 0;
+}
 #socca-btns {
   width: 250px;
 }
 
+.video-list {
+  list-style-type: none;
+}
+
+@media only screen and (max-device-width: 480px) {
+ 
+}
+
+
+.my-labels {
+  font-size: 12px;
+  padding: 5px;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #777;
+  margin-left: 100px;
+}
+
+/*@-ms-viewport{
+    width: device-width;
+}*/
+
+
+
+.soccer-highlights {
+  margin-top: 30px;
+}
 #soccabuzz-slogan {
   margin-left: 100px;
 }
@@ -37,7 +137,6 @@ div.full-width p {
   color: #999;
 }
 div.full-width {
-  position: relative;
   padding: 1.5rem;
   background: #ffffff;
   border-bottom: 1px solid #e7e7e7;
@@ -58,6 +157,13 @@ h2.full-width {
   color: white;
   text-align: c;
 }
+
+@media only screen and (max-device-width: 480px) {
+    h2.full-width {
+      padding-left: 2rem;
+    }
+}
+
 .socca {
   padding-right: 0px;
   padding-left: 0px;
@@ -74,6 +180,12 @@ h2.full-width {
   background-color: #F6F7F8;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
+}
+.navbar.fixed {
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: 1030;
 }
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus  {
   background-color: inherit;
@@ -139,8 +251,16 @@ margin-bottom: 10px;
 }
 #load-div {
   margin-bottom: 30px;
-   cursor: pointer;
+  cursor: pointer;
+  margin-right: 1%;
+  margin-left: 9%;
 }
+
+#load-div-main {
+  margin-bottom: 30px;
+  cursor: pointer;
+}
+
 #myInfiniteScroll {
   display: none;
 }
@@ -213,11 +333,13 @@ h2, h3, #buzz-para {
 margin:0 auto;
 /*background: #fff;*/
 }
+
 #myfooter{
   height: 60px;
   background-color: #e6e6e6;
   text-align: center;
   padding-top: 1em;
+  margin-top: 20px;
 }
 #myfooter a{
 color: #eee;
@@ -325,7 +447,7 @@ font-weight: bold;
 }
 
 #main-wrapper {
-     min-height: 100%;
+     min-height: 82%;
      margin-top: 60px;
 }
 #buzz-para {
@@ -346,6 +468,11 @@ font-weight: bold;
     color: #999;
 }
 
+.align-inline  {
+  display: inline;
+   color: #999;
+   float: left;
+}
 #image-div {
     margin-bottom: 20px;
     text-align: center;
@@ -480,7 +607,7 @@ margin-left: 10px;
 }
 
 .navbar-brand img {
-  margin-top: -5px;
+  margin-top: -10px;
 }
 .btn-signin {
   background-color: #3b5998;
@@ -577,23 +704,26 @@ color: #eeeeee;
   font-size: 15px;
 }
 
+.share-btns-xs {
+  display: inline;
+}
 .comment-div{
   display: inline;
   margin-right: 5px;
-  color: #999;
 }
-.comment-div a {
-  color: #999;
-}
+
 .comment-div p {
   display: inline;
 }
-.vote-buttons {
+.action-buttons {
   display: inline;
   color: #999;
 }
-.vote-buttons p {
+.action-buttons p {
   display: inline;
+}
+.share-div {
+  display: inherit;
 }
 .comment-vote-small {
   color: #999;

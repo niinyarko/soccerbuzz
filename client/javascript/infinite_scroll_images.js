@@ -5,7 +5,7 @@ Template.streamTemplate.created = function () {
 
      // initialize the reactive variables
      instance.loaded = new ReactiveVar(0);
-     instance.limit = new ReactiveVar(1);
+     instance.limit = new ReactiveVar(5);
      instance.ready = new ReactiveVar(false);
 
      instance.autorun(function () {
@@ -31,7 +31,7 @@ Template.streamTemplate.created = function () {
 
      // Cursor
      instance.posts = function() { 
-        return Posts.find({}, {limit: instance.loaded.get()});
+        return Posts.find({}, {sort: {createdAt: -1}, limit: instance.loaded.get()});
       }
 };
 

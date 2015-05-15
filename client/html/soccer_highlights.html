@@ -1,0 +1,51 @@
+<template name="soccerHighlights">
+       
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-2">
+                {{#each videos}}
+                    <ul class="video-list">
+                        <li> <h2>{{title}}</h2>
+                            <div class="embed-responsive embed-responsive-16by9">
+                              <iframe class="embed-responsive-item" src="{{url}}"></iframe>
+                            </div> 
+                        </li>
+                    </ul>
+                {{/each}}
+                {{#if isReady}}
+                    {{#if hasMoreVideos}}
+                      <div id="load-div">
+                          <div class="panel panel-default">
+                            <div class="panel-body">
+                              <h3 class="text-center" data-action="load-btn">Load More...</h3>
+                            </div>
+                          </div>
+                      </div>
+                    {{/if}}
+                  {{else}}
+                    <center>{{> infiniteScrollLoader}}</center>
+                  {{/if}}
+                </div>
+            </div>
+        </div>
+
+       <!--  <div class="embed-responsive embed-responsive-16by9">
+                              <iframe class="embed-responsive-item" src="https://vid.me/e/ZwcN?autoplay=1"></iframe>
+                            </div> -->
+
+
+
+
+</template>
+
+
+
+
+
+
+
+
+
+
+
+

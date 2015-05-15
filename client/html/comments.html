@@ -1,0 +1,58 @@
+<template name="commentsBox">
+  <section id="comments-box">
+        <div class="row">
+          <div class="col-sm-8">
+           {{#autoForm collection="Comments" id="insertCommentForm" type="insert"}}
+            <fieldset>
+              {{> afQuickField name='comment' label=false rows=4 placeholder="Join the discussion" }}
+            </fieldset>
+              <div class="submit-div" data-action="add-comment" id="{{post._id}}">
+                <button type="submit" class="btn btn-primary">
+                          Add Comment
+                </button>
+              </div>
+          {{/autoForm}}
+          </div>
+        </div>
+  </section>
+  {{> commentsTemplate}}
+</template>
+
+<template name="commentsTemplate">
+  <div id="comments-list">
+       <!-- <p id="commenter-para"><a href="#">{{username owner}}</a></p> -->
+    {{#each comments}}
+      <ul class="media-list">
+        <li class="media">
+          <div class="media-left">
+              <!-- <img class="media-object" src="{{imageUrl}}" alt="..."  height="50" width="50"> -->
+          {{> avatar user=this}}
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading"> <span id="username">{{username}}</span> <small>{{ tm_now createdAt}}</small></h4>
+            <div class="content">
+                <p data-id="{{post._id}}" class="comment-content">{{comment}}</p>
+
+                <div class="actions btn-group btn-group-xs">
+                    <div aria-label="Left Align" class="btn btn-default">
+                        <small>{{likes}}</small>
+                        <span aria-hidden="true" class="glyphicon glyphicon-thumbs-up thumbs-up-action-comment" id="{{_id}}"></span>
+                    </div>
+                    <div aria-label="Left Align" class="btn btn-default">
+                        <small>{{dislikes}}</small>
+                        <span aria-hidden="true" class="glyphicon glyphicon-thumbs-down thumbs-down-action-comment" id="{{_id}}"></span>
+                    </div>
+                    <div aria-label="Left Align" class="btn btn-default reply-action" id="{{post._id}}">
+                        Reply
+                    </div>
+
+                    
+                </div>
+                 {{> repliesBox}}
+            </div>
+          </div>
+        </li>
+      </ul>
+      {{/each}}
+  </div>
+</template>
