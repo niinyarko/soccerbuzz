@@ -31,7 +31,10 @@
                                      <p class="para-inline"><i class="fa fa-clock-o"></i>
                                      {{ tm_now buzz.createdAt}}
                                      </p>
-                                    <a href="http://www.facebook.com/sharer.php?u={{urlFor 'showBuzz' _id=post._id slug=formatedCaption}}" target="_blank" class="icon-facebook"><span class=""></span></a>
+
+                                    <!-- <a href="http://www.facebook.com/sharer.php?u={{urlFor 'showBuzz' _id=post._id slug=formatedCaption}}" target="_blank" class="icon-facebook"><span class=""></span></a> -->
+                                    <div class="fb-share-button" data-href="{{urlFor 'showBuzz' _id=post._id slug=formatedCaption}}" data-layout="button_count"></div>
+
                                     <a href="http://twitter.com/share?url={{urlFor 'showBuzz' _id=post._id slug=formatedCaption}}&text={{caption}}" target="_blank" class="icon-twitter"><span class=""></span></a>
                                     
                                   </div>
