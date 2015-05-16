@@ -28,6 +28,9 @@ div[itemprop="caption"] {
   color: #999;
  }
 
+.fb-share-button {
+  display: inline;
+}
 .icon-facebook:before {
   font-family: FontAwesome;
   content: "\f230";
@@ -60,6 +63,7 @@ div[itemprop="caption"] {
    font-size: 1.3em;
    display: inline-block;
    text-decoration: none;
+   margin-left: 4px;
 }
 
 

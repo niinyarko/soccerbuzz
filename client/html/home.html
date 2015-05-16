@@ -83,7 +83,7 @@
          </div>
           <div class="panel-body">
           </div>
-          <div class="panel-footer text-center actions-div">
+          <div class="panel-footer actions-div">
                <p class="para-inline hidden-xs"><i class="fa fa-clock-o"></i>
                 {{ tm_now createdAt}}
                </p>
@@ -104,7 +104,8 @@
                   <a href="#" class="btn btn-default btn-sm" data-action="downvote">
                    <span class="icon-arrow-down"></span>
                  </a>
-                 <a href="http://www.facebook.com/sharer.php?u={{urlFor 'showBuzz' _id=_id slug=formatedCaption}}" target="_blank" class="facebook-sharer"><span class="facebook-icon"></span></a>
+                <!--  <a href="http://www.facebook.com/sharer.php?u={{urlFor 'showBuzz' _id=_id slug=formatedCaption}}" target="_blank" class="facebook-sharer"><span class="facebook-icon"></span></a> -->
+                <div class="fb-share-button" data-href="{{urlFor 'showBuzz' _id=_id slug=formatedCaption}}" data-layout="button_count"></div>
                  <a href="http://twitter.com/share?url={{urlFor 'showBuzz' _id=_id slug=formatedCaption}}&text={{caption}}" target="_blank"><span class="twitter-icon"></span></a>
                </div>
                 <div>

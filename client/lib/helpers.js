@@ -1,8 +1,6 @@
-Meteor.subscribe("users");
-Meteor.subscribe("commentReplies");
-Meteor.subscribe("buzzComments");
+// Meteor.subscribe("users");
 
-Template.registerHelper("commentsCount", function(id) {
+/*Template.registerHelper("commentsCount", function(id) {
   var commentsByDoc = Comments.find({postId: id},{sort: {createdAt: -1}}).count();
   var repliesToComment = Replies.find({postId: id},{sort: {createdAt: -1}}).count();
   var totalCount = commentsByDoc + repliesToComment;
@@ -19,7 +17,7 @@ Template.registerHelper("commentString", function(id) {
         else {
             return "comments";
         }
-})
+})*/
 
 Template.editPost.helpers({
   post: function () {
