@@ -11,7 +11,7 @@
   overflow: hidden;
 }
 .panel-image ~ .panel-footer a {
-  padding: 0px 10px;
+  /*padding: 0px 10px;*/
   /*color: rgb(100, 100, 100);*/
   color: #999;
 }
@@ -28,44 +28,68 @@ div[itemprop="caption"] {
   color: #999;
  }
 
-.fb-share-button {
-  display: inline;
-  margin-right: 3px;
-}
 .icon-facebook:before {
   font-family: FontAwesome;
-  content: "\f230";
-  font-size: 1.5em;
+  content: "\f09a";
+  color: #ffffff;
+}
+
+.icon-facebook-small:before {
+  font-family: FontAwesome;
+  content: "\f09a";
   display: inline-block;
   text-decoration: none;
+  font-size: 1em;
 }
 .icon-twitter:before {
   font-family: FontAwesome;
   content: "\f099";
-  font-size: 1.5em;
+  color: #ffffff;
+}
+
+.icon-twitter-small:before {
+  font-family: FontAwesome;
+  content: "\f099";
   display: inline-block;
   text-decoration: none;
+  font-size: 1.3em;
 }
 
 .facebook-icon:before {
    font-family: FontAwesome;
    content: "\f09a";
+   display: inline-block;
+   text-decoration: none;
+   color: #ffffff;
+}
+
+.facebook-icon-small:before {
+   font-family: FontAwesome;
+   content: "\f09a";
    font-size: 1.3em;
    display: inline-block;
    text-decoration: none;
-   margin-right: 4px;
-   margin-left: 4px;
+   margin-right: 2px;
+   margin-left: 3px;
 }
 
 
 .twitter-icon:before {
    font-family: FontAwesome;
    content: "\f099";
+   /*font-size: 1.3em;*/
+   display: inline-block;
+   text-decoration: none;
+   color: #ffffff;
+}
+
+.twitter-icon-small:before {
+   font-family: FontAwesome;
+   content: "\f099";
    font-size: 1.3em;
    display: inline-block;
    text-decoration: none;
 }
-
 
 
 
@@ -472,6 +496,10 @@ font-weight: bold;
     color: #999;
 }
 
+.inline {
+  display: inline;
+}
+
 .align-inline  {
   display: inline;
    color: #999;
@@ -702,10 +730,26 @@ color: #eeeeee;
   font-family: FontAwesome;
   font-size: 15px;
 }
+
+.icon-arrow-down-small:before {
+  content:"\f063";
+  font-family: FontAwesome;
+}
+
+.icon2-arrow-down:before {
+  content:"\f063";
+  font-family: FontAwesome;
+  font-size: 22px;
+}
 .icon-comment:before {
    content:"\f075";
   font-family: FontAwesome;
   font-size: 15px;
+}
+
+.icon-comment-small:before {
+   content:"\f075";
+  font-family: FontAwesome;
 }
 
 .share-btns-xs {
@@ -734,7 +778,7 @@ color: #eeeeee;
 }
 .comment-vote-small a{
   color: #999;
-  margin-right: 15px;
+  /*margin-right: 15px;*/
 }
 
 .icon-arrow-up:before{
@@ -742,6 +786,12 @@ color: #eeeeee;
   font-family: FontAwesome;
   font-size: 15px;
 }
+
+.icon-arrow-up-small:before{
+  content:"\f062";
+  font-family: FontAwesome;
+}
+
 .btn-twitter-small {
     background-color: #55acee;
     border: 0;
@@ -753,6 +803,13 @@ color: #eeeeee;
 .btn-twitter:hover  {
   color: #eeeeee;
 }
+
+.icon2-arrow-up:before {
+  content:"\f062";
+  font-family: FontAwesome;
+  font-size: 22px;
+}
+
 .btn-twitter-small:hover  {
   color: #eeeeee;
 }

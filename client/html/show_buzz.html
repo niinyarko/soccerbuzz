@@ -13,54 +13,38 @@
                                  </div>
                                  <div class="panel-body">
                                  </div>
-                                 <div class="panel-footer text-center">
+                                 <div class="panel-footer">
                                   <div class="action-buttons hidden-xs">
-                                    <p class="para-inline">{{post.score}} {{scoreString post.score}}</p>
-                                     <a href="#" class="btn btn-default btn-sm" data-action="upvote">
-                                      <span class="icon-arrow-up"></span>
-                                     </a>
-                                     <a href="#" class="btn btn-default btn-sm" data-action="downvote">
-                                      <span class="icon-arrow-down"></span>
-                                    </a>
-                                    <p class="para-inline">
-                                      <a href="{{urlFor 'showBuzz' _id=post._id slug=formatedCaption}}">
-                                     <i class="glyphicon glyphicon-comment"></i>
-                                     <fb:comments-count href={{urlFor 'showBuzz' _id=post._id slug=formatedCaption}}></fb:comments-count> comments 
-                                     </a>
+                                    <p class="para-inline"><i class="fa fa-clock-o"></i>
+                                    {{ tm_now buzz.createdAt}}
                                     </p>
-                                     <p class="para-inline"><i class="fa fa-clock-o"></i>
-                                     {{ tm_now buzz.createdAt}}
-                                     </p>
+                                    <p class="para-inline">{{post.score}} {{scoreString post.score}}</p>
+                                       <a href="#" class="btn btn-default" data-action="upvote">
+                                        <span class="icon-arrow-up"></span>
+                                       </a>
+                                       <a href="#" class="btn btn-default" data-action="downvote">
+                                        <span class="icon-arrow-down"></span>
+                                       </a>
+                                    <p class="inline">Share: </p>
+                                    <a href="http://www.facebook.com/sharer.php?u={{urlFor 'showBuzz' _id=post._id slug=formatedCaption}}" target="_blank"><span class="icon-facebook btn btn-primary"></span></a>
 
-                                    <!-- <a href="http://www.facebook.com/sharer.php?u={{urlFor 'showBuzz' _id=post._id slug=formatedCaption}}" target="_blank" class="icon-facebook"><span class=""></span></a> -->
-                                    <div class="fb-share-button" data-href="{{urlFor 'showBuzz' _id=post._id slug=formatedCaption}}" data-layout="button_count"></div>
-
-                                    <a href="http://twitter.com/share?url={{urlFor 'showBuzz' _id=post._id slug=formatedCaption}}&text={{caption}}" target="_blank" class="icon-twitter"><span class=""></span></a>
+                                    <a href="http://twitter.com/share?url={{urlFor 'showBuzz' _id=post._id slug=formatedCaption}}&text={{caption}}" target="_blank"><span class="icon-twitter btn btn-info"></span></a>
                                     
                                   </div>
                                   <div class="visible-xs comment-vote-small" >
                                   <table>
                                     <thead>
                                       <tr>
-                                        <th>
-                                           <p>
-                                             <a href="{{urlFor 'showBuzz' _id=post._id slug=formatedCaption}}"> 
-                                             <fb:comments-count href={{urlFor 'showBuzz' _id=_id slug=formatedCaption}}></fb:comments-count> comments 
-                                             </a>
-                                           </p>
-                                        </th>
-                                        <th>
+                                        <th style="padding-left:10px">
                                            <p class="">{{post.score}} {{scoreString post.score}}</p>
+                                        </th>
+                                        <th style="padding-left:10px">
+                                          Share
                                         </th>
                                       </tr>
                                     </thead>
                                     <tbody>
                                       <tr>
-                                        <td>
-                                             <a href="{{urlFor 'showBuzz' _id=post._id slug=formatedCaption}}" class="btn btn-default btn-sm btn-check" title="comment">
-                                               <span class="icon-comment"></span>
-                                             </a>
-                                        </td>
                                         <td>
                                              <a href="#" class="btn btn-default btn-sm" data-action="upvote">
                                                <span class="icon-arrow-up"></span>
@@ -69,14 +53,17 @@
                                                <span class="icon-arrow-down"></span>
                                              </a>
                                        </td>
+                                       <td style="padding-left:10px">
+                                              <a href="http://www.facebook.com/sharer.php?u={{urlFor 'showBuzz' _id=post._id slug=formatedCaption}}" target="_blank"><span class="icon-facebook btn btn-primary btn-sm"></span></a>
+
+                                              <a href="http://twitter.com/share?url={{urlFor 'showBuzz' _id=post._id slug=formatedCaption}}&text={{caption}}" target="_blank"><span class="icon-twitter btn btn-info btn-sm"></span></a>
+                                       </td>
                                       </tr>
                                     </tbody>
                                   </table>  
                                        <p class="para-inline"><i class="fa fa-clock-o"></i>
                                        {{ tm_now buzz.createdAt}}
                                        </p>
-                                      <a href="http://www.facebook.com/sharer.php?u={{urlFor 'showBuzz' _id=post._id slug=formatedCaption}}" target="_blank" class="icon-facebook"><span class=""></span></a>
-                                      <a href="http://twitter.com/share?url={{urlFor 'showBuzz' _id=post._id slug=formatedCaption}}&text={{caption}}" target="_blank" class="icon-twitter"><span class=""></span></a>
                                   </div>
                                       
                                  </div>
