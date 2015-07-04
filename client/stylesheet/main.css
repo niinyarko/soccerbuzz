@@ -1,3 +1,121 @@
+/* public profile */
+
+.profile {
+  margin: 20px 0;
+}
+
+/* Profile sidebar */
+.profile-sidebar {
+  padding: 20px 0 10px 0;
+  background: #fff;
+  margin-bottom: 40px;
+}
+
+.profile-userpic img {
+  float: none;
+  margin: 0 auto;
+  width: 50%;
+  height: 50%;
+  -webkit-border-radius: 50% !important;
+  -moz-border-radius: 50% !important;
+  border-radius: 50% !important;
+}
+
+.vid {
+  margin: 20px 0 0 20px;
+  float: left;
+  width: 307px;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 0 6px 0 #ccc;
+}
+.profile-usertitle {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.profile-usertitle-name {
+  color: #5a7391;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 7px;
+}
+
+.profile-usertitle-job {
+  text-transform: uppercase;
+  color: #5b9bd1;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.profile-userbuttons {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.profile-userbuttons .btn {
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 15px;
+  margin-right: 5px;
+}
+
+.profile-userbuttons .btn:last-child {
+  margin-right: 0px;
+}
+    
+.profile-usermenu {
+  margin-top: 30px;
+}
+
+.profile-usermenu ul li {
+  border-bottom: 1px solid #f0f4f7;
+}
+
+.profile-usermenu ul li:last-child {
+  border-bottom: none;
+}
+
+.profile-usermenu ul li a {
+  color: #93a3b5;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.profile-usermenu ul li a i {
+  margin-right: 8px;
+  font-size: 14px;
+}
+
+.profile-usermenu ul li a:hover {
+  background-color: #fafcfd;
+  color: #5b9bd1;
+}
+
+.profile-usermenu ul li.active {
+  border-bottom: none;
+}
+
+.profile-usermenu ul li.active a {
+  color: #5b9bd1;
+  background-color: #f6f9fb;
+  border-left: 2px solid #5b9bd1;
+  margin-left: -2px;
+}
+
+/* Profile Content */
+.profile-content {
+  /*background: #fff;*/
+  /*min-height: 460px;*/
+  /*width: 70%;*/
+}
+
+/*--------------------------public profile end---------------------------------------------*/
+
+
+/* panel */
 .panel-image img.panel-image-preview {
     width: 100%;
   border-radius: 4px 4px 0px 0px;
@@ -21,17 +139,30 @@
   padding: 0px;
 }
 
+/*-------panel end -------------------------------------------------------------------------*/
+
+/*.public-profile-panel {
+   width: 70%;
+}*/
+
 div[itemprop="caption"] {
    color: red;
 }
  .home-panel a {
   color: #999;
  }
+.buzz-panel small > a {
+  text-decoration: underline;
+  color: #336E7B;
+}
 
 .icon-facebook:before {
   font-family: FontAwesome;
   content: "\f09a";
   color: #ffffff;
+}
+.comment-div > p > a {
+  color: #999;
 }
 
 .icon-facebook-small:before {
@@ -142,11 +273,22 @@ div[itemprop="caption"] {
   margin-left: 100px;
 }
 
+#soccabuzz-slogan-small {
+  padding-bottom: 5px;
+}
+
 #social-btns {
   /*width: 620px;*/
   height: 20px;
   /*margin-left: -190px;*/
 }
+
+@media (max-device-width: 480px) {
+  #social-btns {
+    padding-bottom: 25px;
+  }
+}
+
 .twitter-follow-button {
   float: right;
   margin-left: -5px;
@@ -183,7 +325,7 @@ h2.full-width {
   padding-left: 22rem;
   background: #6C7A89;
   color: white;
-  text-align: c;
+  text-align: center;
 }
 
 @media only screen and (max-device-width: 480px) {
@@ -282,6 +424,26 @@ margin-bottom: 10px;
   cursor: pointer;
   margin-right: 1%;
   margin-left: 9%;
+}
+
+#load-div-videos {
+  width: 74.5%;
+  cursor: pointer;
+  position: relative;
+  margin-top: 10px;
+}
+
+@media only screen and (max-device-width: 480px) {
+  #load-div-videos {
+    width: 100%;
+    cursor: pointer;
+    position: relative;
+    margin-top: 10px;
+  }
+}
+
+.infinite-loader {
+  margin-top: 10px
 }
 
 #load-div-main {

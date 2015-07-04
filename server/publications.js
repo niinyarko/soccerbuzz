@@ -25,3 +25,7 @@ Meteor.publish('videos', function(limit) {
   Meteor._sleepForMs(2000);
   return Videos.find({}, {sort: {createdAt: -1},limit: limit});
 });
+
+Meteor.publish('singleVideo', function(id) {
+  return Videos.find({_id: id});
+});

@@ -11,20 +11,31 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="{{pathFor "home"}}"><img src="/Soccerbuzz.png" height="40" width="120"></a>
+      <a class="navbar-brand" href="/"><img src="/Soccerbuzz.png" height="40" width="120"></a>
     </div>
     <div class="collapse navbar-collapse" id="top-nav">
       <ul class="nav navbar-nav">
-        <li><a href="{{pathFor "soccerHighlights"}}" class="first-label"><span class="label label-primary my-labels">Watch Soccer Highlights</span></a></li>
+        <!-- <li><a href="{{pathFor "soccerHighlights"}}" class="first-label"><span class="label label-primary my-labels">Watch Soccer Highlights</span></a></li> -->
+        <li>
+            <div class="fb-like fb-like-div" data-href="https://www.facebook.com/soccabuzz" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false">
+            </div>
+        </li>
+        <li>
+            <a class="twitter-follow-button twitter-follow-div"
+              href="https://twitter.com/soccabuzz"
+              data-show-count="false"
+              data-lang="en">
+                Follow @soccabuzz
+            </a>
+        </li>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
+<!--       <ul class="nav navbar-nav navbar-right">
       {{#if currentUser}}
           <li><img src="{{userPic}}" alt="{{profileName}}" class="user-pic-small" width="{{imgWidth}}" height="30"></li>
            <li class="dropdown">
                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Me <span class="caret"></span></a>
                      <ul class="dropdown-menu" role="menu">
                        <li><a href="{{pathFor 'profile' _id=currentUser}}"><i class="user icon"></i>My Profile</a></li>
-                       <!-- <li><a href="#"><i class="setting icon"></i>Settings</a></li> -->
                        <li><a href="#" data-action="signout-btn"><i class="sign out icon"></i>Logout</a></li>
                      </ul>
            </li>
@@ -45,7 +56,7 @@
             </a>
           </li>
           {{/if}}
-      </ul>
+      </ul> -->
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container -->
 </nav>

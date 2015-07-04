@@ -13,6 +13,11 @@
   line-height: 500px;
 }
 
+#infinite-scroll {
+  width: 74.5%;
+  text-align: center
+}
+
 #infinite-scroll-Main .section {
   height: 60px;
   line-height: 60px;
@@ -37,17 +42,18 @@
    background-color: #ffffff;
    border: 1px solid #e7e7e7;
    border-radius: 4px;
-   margin-bottom: 30px;
+  /* margin-bottom: 30px;
    margin-right: 1%;
-   margin-left: 9%;
+   margin-left: 9%;*/
 }
 
 #infinite-scroll .loader {
   width: 40px;
   height: 40px;
   display: inline-block;
+  /*display: inline-block;
   vertical-align: middle;
-  position: relative; }
+  position: relative;*/ }
 
 .section-2 {
   background-color: #2980b9; }

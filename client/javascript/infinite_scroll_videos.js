@@ -5,7 +5,7 @@ Template.soccerHighlights.created = function () {
 
      // initialize the reactive variables
      instance.loaded = new ReactiveVar(0);
-     instance.limit = new ReactiveVar(5);
+     instance.limit = new ReactiveVar(6);
      instance.ready = new ReactiveVar(false);
 
      instance.autorun(function () {
@@ -44,7 +44,7 @@ Template.soccerHighlights.events({
     var limit = instance.limit.get();
 
     // increase limit by 5 and update it
-    limit += 5;
+    limit += 2;
     instance.limit.set(limit);
   }
 });
@@ -63,3 +63,9 @@ Template.soccerHighlights.helpers({
     return Template.instance().videos().count() >= Template.instance().limit.get();
   }
 });
+
+Template.soccerHighlights.rendered = function () {
+  try {
+      FB.XFBML.parse();
+  }catch(e) {}
+};

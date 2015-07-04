@@ -1,0 +1,35 @@
+<template name="singleVideo">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-2">
+                {{#with video}}
+                  <div class="panel panel-default ">
+                     <div class="panel-heading">
+                      {{title}}
+                     </div>
+                     <div class="panel-image hide-panel-body">
+                            <a href="#">
+                              <div class="embed-responsive embed-responsive-16by9">
+                                  <iframe class="embed-responsive-item" src="{{url}}"></iframe>
+                              </div>
+                            </a>
+                     </div>
+                     <div class="panel-body">
+                         
+                     </div>
+                     <div class="panel-footer text-center">
+                      <p class="inline">{{ tm_now createdAt}}</p>
+                      <p class="inline">Share: </p>
+                      <a href="http://www.facebook.com/sharer.php?u={{urlFor 'singleVideo' _id=_id}}" target="_blank"><span class="icon-facebook btn btn-primary"></span></a>
+
+                      <a href="http://twitter.com/share?url={{urlFor 'singleVideo' _id=_id }}&text={{title}}" target="_blank"><span class="icon-twitter btn btn-info"></span></a>
+                     </div>
+                  </div>
+                  <div id="comments-box">
+                        <div class="fb-comments" data-href={{urlFor 'singleVideo' _id=_id }} data-numposts="5" data-colorscheme="light"></div>
+                  </div>
+                {{/with}}
+            </div>
+    </div>
+    </div>
+</template>

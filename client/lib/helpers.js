@@ -1,23 +1,5 @@
-// Meteor.subscribe("users");
-
-/*Template.registerHelper("commentsCount", function(id) {
-  var commentsByDoc = Comments.find({postId: id},{sort: {createdAt: -1}}).count();
-  var repliesToComment = Replies.find({postId: id},{sort: {createdAt: -1}}).count();
-  var totalCount = commentsByDoc + repliesToComment;
-  return totalCount;
-})
-
-Template.registerHelper("commentString", function(id) {
-  var commentsByDoc = Comments.find({postId: id},{sort: {createdAt: -1}}).count();
-  var repliesToComment = Replies.find({postId: id},{sort: {createdAt: -1}}).count();
-  var totalCount = commentsByDoc + repliesToComment;
-    if (totalCount == 1) {
-            return "comment";
-        }
-        else {
-            return "comments";
-        }
-})*/
+Meteor.subscribe("users");
+Meteor.subscribe("posts", 0);
 
 Template.editPost.helpers({
   post: function () {
@@ -36,6 +18,51 @@ Template.registerHelper('userPic', function(){
     var picture = user.profile.picture;
     return picture;
 })
+
+Template.registerHelper('profilePicture', function(userId){
+    var _id = userId;
+    var user = Meteor.users.findOne(_id);
+    var picture = user.profile.picture;
+    if (typeof(picture) == "undefined") {
+      return "/default-avatar.png";
+    }
+    else {
+      return picture;
+    }
+})
+
+Template.registerHelper('buzzowner', function(postId){
+  var postId = postId;
+  var post = Posts.findOne(postId);
+  console.log(post);
+  var ownerId = post.owner;
+   console.log(ownerId);
+  var user = Meteor.users.findOne(ownerId);
+   console.log(user);
+  var check_email = user.emails;
+  if (typeof(check_email) == "undefined") {
+    var full_name = user.profile.name;
+    // var username = email.replace(/@.*$/,"");
+    var tmp = full_name.split(" ");
+    var username = tmp[0];
+    return username;
+  }
+  else {
+    var email = user.emails[0].address;
+    var username = email.replace(/@.*$/,"");
+    return username;
+  }
+ 
+})
+
+Template.registerHelper('userProfileName', function(userId){
+    var _id = userId;
+    var user = Meteor.users.findOne(_id);
+    var email = user.emails[0].address;
+    var username = email.replace(/@.*$/,"");
+    return username;
+})
+
 Template.registerHelper('imgWidth', function() {
     var user = Meteor.user();
     var picture = user.profile.picture;
@@ -174,3 +201,8 @@ Template.registerHelper('getName', function(id){
       return name;
 })
 
+Template.registerHelper("getWidgetUrl", function(){
+  return "http://www.fifa.com/flash/widgets/newsreader/app.swf?lang='en'"
+})
+
+// Template.registerHelper()

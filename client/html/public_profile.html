@@ -1,0 +1,160 @@
+<template name="publicProfile">
+    
+    <div class="container">
+        <div class="row profile">
+            <div class="col-md-3">
+                <div class="profile-sidebar">
+                    <!-- SIDEBAR USERPIC -->
+                    <div class="profile-userpic">
+                        <img src="{{profilePicture userId}}" class="img-responsive" alt="Profile Picture">
+                    </div>
+                    <!-- END SIDEBAR USERPIC -->
+                    <!-- SIDEBAR USER TITLE -->
+                    <div class="profile-usertitle">
+                        <div class="profile-usertitle-name">
+                            {{userProfileName userId}}
+                        </div>
+                        <div class="profile-usertitle-job">
+                            <!-- Developer -->
+                        </div>
+                    </div>
+                    <!-- END SIDEBAR USER TITLE -->
+                    <!-- SIDEBAR BUTTONS -->
+                    <div class="profile-userbuttons">
+                        <button type="button" class="btn btn-success btn-sm"><span class="fa fa-pencil"></span>{{postsCount}} {{postsCountString postsCount}}</button>
+                        <!-- <button type="button" class="btn btn-danger btn-sm">Message</button> -->
+                    </div>
+                    <!-- END SIDEBAR BUTTONS -->
+                    <!-- SIDEBAR MENU -->
+          <!--           <div class="profile-usermenu">
+                        <ul class="nav">
+                            <li class="active">
+                                <a href="#">
+                                <i class="glyphicon glyphicon-home"></i>
+                                Overview </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                <i class="glyphicon glyphicon-user"></i>
+                                Account Settings </a>
+                            </li>
+                            <li>
+                                <a href="#" target="_blank">
+                                <i class="glyphicon glyphicon-ok"></i>
+                                Tasks </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                <i class="glyphicon glyphicon-flag"></i>
+                                Help </a>
+                            </li>
+                        </ul>
+                    </div> -->
+                    <!-- END MENU -->
+                </div>
+            </div>
+            <div class="col-md-6 col-md-offset-1 col-xs-12">
+                <div class="profile-content">
+                 {{#each posts}}
+                   <div class="panel panel-default">
+                      <div itemscope itemtype="http://schema.org/ImageObject">
+                       <div class="panel-heading buzz-panel">
+                           
+                           <a href="{{pathFor "showBuzz" _id=_id slug=formatedCaption}}" class="panel-title">
+                             <p id="buzz-para" itemprop="caption">{{caption}}</p>
+                           </a>
+                           <small>Posted by: <a href="{{pathFor 'public_profile' _id=owner}}">{{buzzowner _id}}</a></small>
+                       </div>
+                       <div class="panel-image hide-panel-body">
+                           <a href="{{pathFor "showBuzz" _id=_id slug=formatedCaption}}" id="showBuzz"> 
+                           <img src="{{absoluteImageUrl}}" with="300" height="300" itemprop="contentUrl" class="img-responsive">
+                           </a>
+                       </div>
+                      </div>
+                       <div class="panel-body">
+                       </div>
+                       <div class="panel-footer buzz-footer">
+                            <p class="para-inline hidden-xs"><i class="fa fa-clock-o"></i>
+                             {{ tm_now createdAt}}
+                            </p>
+                            <div class="comment-div hidden-xs">
+                            <p><a href="{{urlFor 'showBuzz' _id=_id slug=formatedCaption}}">
+                            <fb:comments-count href={{urlFor 'showBuzz' _id=_id slug=formatedCaption}}></fb:comments-count> comments 
+                            </a>
+                            </p>
+                             <a href="{{urlFor 'showBuzz' _id=_id slug=formatedCaption}}" class="btn btn-default btn-sm" title="comment">
+                               <span class="icon-comment"></span>
+                             </a>
+                            </div>
+                            <div class="action-buttons hidden-xs">
+                                <p>{{score}} {{scoreString score}}</p>
+                               <a href="#" class="btn btn-default btn-sm" data-action="upvote">
+                                <span class="icon-arrow-up"></span>
+                               </a>
+                               <a href="#" class="btn btn-default btn-sm" data-action="downvote">
+                                <span class="icon-arrow-down"></span>
+                              </a>
+                              <a href="http://www.facebook.com/sharer.php?u={{urlFor 'showBuzz' _id=_id slug=formatedCaption}}" target="_blank" class="facebook-sharer btn btn-primary"><span class="facebook-icon"></span></a>
+
+                              <a href="http://twitter.com/share?url={{urlFor 'showBuzz' _id=_id slug=formatedCaption}}&text={{caption}}" target="_blank"><span class=" btn btn-info twitter-icon"></span></a>
+                              
+                            </div>
+                             <div>
+                               <div class="visible-xs comment-vote-small" >
+                               <table>
+                                 <thead>
+                                   <tr>
+                                     <th>
+                                        <p>
+                                          <a href="{{urlFor 'showBuzz' _id=_id slug=formatedCaption}}"> 
+                                          <fb:comments-count href={{urlFor 'showBuzz' _id=_id slug=formatedCaption}}></fb:comments-count> comments 
+                                          </a>
+                                        </p>
+                                     </th>
+                                     <th style="padding-left:10px">
+                                        <p class="">{{score}} {{scoreString score}}</p>
+                                     </th>
+                                     <th style="padding-left:10px">
+                                       Share
+                                     </th>
+                                   </tr>
+                                 </thead>
+                                 <tbody>
+                                   <tr>
+                                     <td>
+                                          <a href="{{urlFor 'showBuzz' _id=_id slug=formatedCaption}}" class="btn btn-default btn-sm btn-check" title="comment">
+                                            <span class="icon-comment-small"></span>
+                                          </a>
+                                     </td>
+                                     <td>
+                                          <a href="#" class="btn btn-default btn-sm " data-action="upvote">
+                                            <span class="icon-arrow-up-small"></span>
+                                          </a>
+                                          <a href="#" class="btn btn-default btn-sm" data-action="downvote">
+                                            <span class="icon-arrow-down-small"></span>
+                                          </a>
+                                    </td>
+                                    <td style="padding-left:10px">
+                                           <a href="http://www.facebook.com/sharer.php?u={{urlFor 'showBuzz' _id=_id slug=formatedCaption}}" target="_blank" class="facebook-sharer btn btn-primary btn-sm"><span class="facebook-icon"></span></a>
+
+                                           <a href="http://twitter.com/share?url={{urlFor 'showBuzz' _id=_id slug=formatedCaption}}&text={{caption}}" target="_blank"><span class=" btn btn-info twitter-icon btn-sm"></span></a>
+                                    </td>
+                                   </tr>
+                                 </tbody>
+                               </table>  
+                                      <p class="para-inline"><i class="fa fa-clock-o"></i>
+                                      {{ tm_now buzz.createdAt}}
+                                      </p>
+                               </div>
+
+                             </div>
+                          
+                       </div>
+                   </div>
+                   {{/each}}
+                   {{> Paginator_UI posts}}
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

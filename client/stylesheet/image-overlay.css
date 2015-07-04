@@ -1,0 +1,69 @@
+.tile {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 200px;
+}
+.tile img {    
+    left: 0;
+    bottom: 0;
+}
+.tile span.overlay {
+    margin:0;
+    position: absolute;   
+    left: 0;
+    bottom: 0;
+    height: 200px;
+    width: 100%;
+    line-height: 24px;
+    font-size: 15px;
+    color: #ddd;
+    background: #666;
+    opacity: 0.5;
+    transition: all 0.5s;
+}
+/*.tile a:hover span.overlay, .tile a:focus span.overlay {
+    margin:0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+}*/
+
+.videos-panel {
+    float: left;
+    margin-right: 10px;
+    width: 100%;
+}
+
+.scorecards-table ul{
+  list-style-type: none;
+}
+
+/*.tile span.content, .tile a:hover span.content {
+    display: block;
+    padding: 8px 16px 5px 12px;
+    color: #fff;
+} */  
+.tile span.tiletitle {
+    text-transform:uppercase;
+}
+.tile span.plus {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: inline;
+    height:20px;
+    line-height: 20px;
+    padding: 2px 7px;
+    background: #444;
+    color: #fff;
+}
+/*.tile a:hover span.plus {
+    visibility: hidden;
+}
+.tile span.tilecopy {
+    display: block;
+    margin: 12px 0 0 0;
+    width:100%;
+    line-height: 20px;
+}*/
