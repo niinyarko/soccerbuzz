@@ -35,7 +35,7 @@
                         <div class="col-md-6">
                           <div class="panel panel-default videos-panel">
                              <div class="panel-heading">
-                              {{title}}
+                              <a href="{{pathFor 'singleVideo' _id=_id}}">{{title}}</a>
                              </div>
                              <div class="panel-image hide-panel-body">
                                 <div class="tile">
@@ -43,7 +43,7 @@
                                       <div class="embed-responsive embed-responsive-16by9">
                                           <iframe class="embed-responsive-item" src="{{url}}"></iframe>
                                       </div>
-                                  <span class="overlay">
+                                  <span class="overlay hidden-xs">
                                       <span class="content">
                                       </span>
                                   </span>
@@ -53,8 +53,18 @@
                              <div class="panel-body">
                                  
                              </div>
-                             <div class="panel-footer text-center">
+                             <div class="panel-footer text-center hidden-xs">
                               <p>{{ tm_now createdAt}}</p>
+                             </div>
+                             <div class="panel-footer visible-xs">
+                               <table id="video-share-btns">
+                                 <tr>
+                                   <td>{{ tm_now createdAt}}</td>
+                                   <td>Share:</td>
+                                   <td><a href="http://www.facebook.com/sharer.php?u={{urlFor 'singleVideo' _id=_id}}" target="_blank"><span class="icon-facebook btn btn-primary"></span></a></td>
+                                   <td> <a href="http://twitter.com/share?url={{urlFor 'singleVideo' _id=_id }}&text={{title}}" target="_blank" class="visible-xs"><span class="icon-twitter btn btn-info"></span></a></td>
+                                 </tr>
+                               </table>
                              </div>
                           </div>
                         </div>

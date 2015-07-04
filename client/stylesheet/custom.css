@@ -6,3 +6,7 @@
 .twitter-follow-div {
     margin-top: 12px;
 }
+
+#video-share-btns tr td {
+    padding-right: 5px;
+}
